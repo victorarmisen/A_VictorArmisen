@@ -1,7 +1,6 @@
-package com.example.a_victorarmisen
+package com.example.a_victorarmisen.fragment
 
 
-import android.R.id
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
@@ -9,11 +8,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import com.example.a_victorarmisen.R
+import com.example.a_victorarmisen.activity.MainActivity
+import com.example.a_victorarmisen.activity.SignUp
+import com.example.a_victorarmisen.util.PREF_USERID
+import com.example.a_victorarmisen.util.PREF_USERNAME
+import com.example.a_victorarmisen.util.USER_PREFS
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
-import kotlinx.android.synthetic.main.fragment_profile.*;
 
 /**
  * A simple [Fragment] subclass.
@@ -32,15 +37,19 @@ class ProfileFragment : Fragment()  {
         // Inflate the layout for this fragment
 
         val view = inflater.inflate(R.layout.fragment_profile, container, false)
-        val buttonClick = view.findViewById<View>(R.id.button_send) as Button
-
+        val buttonSignUp = view.findViewById(R.id.button_send) as Button
+        //val buttonClick = view.findViewById<View>(R.id.button_send) as Button
+        val buttonLogOut = view.findViewById(R.id.LOG_OUT) as Button
+        val imageUser = view.findViewById(R.id.image_user) as ImageView
 
         if(FirebaseAuth.getInstance().currentUser == null)
         {
 
-            buttonClick.visibility = View.VISIBLE
+            buttonSignUp.visibility = View.VISIBLE
+            buttonLogOut.visibility = View.GONE
+            imageUser.visibility = View.GONE
 
-            buttonClick.setOnClickListener {
+            buttonSignUp.setOnClickListener {
                 println("Hello")
                 startActivity(Intent(activity, SignUp::class.java))
 
@@ -48,7 +57,9 @@ class ProfileFragment : Fragment()  {
 
         } else {
 
-            buttonClick.visibility = View.GONE
+            buttonSignUp.visibility = View.GONE
+            buttonLogOut.visibility = View.VISIBLE
+            imageUser.visibility = View.VISIBLE
 
             val db = FirebaseFirestore.getInstance()
 

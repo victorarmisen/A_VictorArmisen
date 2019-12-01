@@ -1,4 +1,4 @@
-package com.example.a_victorarmisen
+package com.example.a_victorarmisen.util
 
 data public class UserMode (val id :String? = null,
                      val username: String? = null,

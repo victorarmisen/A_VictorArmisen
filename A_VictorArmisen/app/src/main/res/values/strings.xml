@@ -15,4 +15,8 @@
     <string name="email">Email</string>
     <string name="password">Password</string>
     <string name="title_activity_sign_up">SignUpActivity</string>
+
+    <string name="facebook_app_id">555088585290890</string> <string name="fb_login_protocol_scheme">fb555088585290890</string>
+
+
 </resources>

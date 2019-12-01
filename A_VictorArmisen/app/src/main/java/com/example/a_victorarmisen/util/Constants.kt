@@ -1,4 +1,4 @@
-package com.example.a_victorarmisen
+package com.example.a_victorarmisen.util
 
 
 const val USER_PREFS = "Constants"

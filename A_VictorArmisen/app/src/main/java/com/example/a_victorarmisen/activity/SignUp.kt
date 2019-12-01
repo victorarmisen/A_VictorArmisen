@@ -1,30 +1,31 @@
-package com.example.a_victorarmisen
+package com.example.a_victorarmisen.activity
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import com.example.a_victorarmisen.R
+import com.example.a_victorarmisen.fragment.ProfileFragment
+import com.example.a_victorarmisen.util.UserMode
+import com.facebook.*
+import com.google.firebase.auth.FacebookAuthProvider
+import com.facebook.login.LoginResult
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_sign_up.*
-import com.example.a_victorarmisen.UserMode
-import com.google.android.gms.auth.api.signin.GoogleSignIn
-import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
-import com.google.android.gms.common.api.ApiException
-import com.google.android.gms.tasks.OnCompleteListener
-import com.google.android.material.snackbar.Snackbar
-import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.firestore.FirebaseFirestore
+import kotlinx.android.synthetic.main.activity_sign_up.button_facebook;
+import kotlinx.android.synthetic.main.activity_sign_up.view.*
+
 
 class SignUp : AppCompatActivity() {
 
 
     private lateinit var auth: FirebaseAuth
-
+    private lateinit var callbackManager: CallbackManager
 
 
     override fun onCreate(savedInstanceState: Bundle?)
@@ -74,7 +75,12 @@ class SignUp : AppCompatActivity() {
                         // Sign in success, update UI with the signed-in user's information
                         Log.d("Sign", "createUserWithEmail:success")
                         val user = auth.currentUser
-                        val userModel = UserMode(user?.uid, username, mail)
+                        val userModel =
+                            UserMode(
+                                user?.uid,
+                                username,
+                                mail
+                            )
 
                         val db = FirebaseFirestore.getInstance()
                         if (user != null) {
@@ -151,14 +157,39 @@ class SignUp : AppCompatActivity() {
         }
 
 
+        // Initialize Facebook Login button
+        callbackManager = CallbackManager.Factory.create()
 
+        button_facebook.setReadPermissions("email", "public_profile")
+        button_facebook.registerCallback(callbackManager, object : FacebookCallback<LoginResult> {
+            override fun onSuccess(loginResult: LoginResult) {
+                //Log.d(TAG, "facebook:onSuccess:$loginResult")
+                Toast.makeText(this@SignUp, "facebook:onSuccess:$loginResult", Toast.LENGTH_SHORT).show()
+                handleFacebookAccessToken(loginResult.accessToken)
+            }
 
+            override fun onCancel() {
+                //Log.d(TAG, "facebook:onCancel")
+                Toast.makeText(this@SignUp, "facebook:onCancel", Toast.LENGTH_SHORT).show()
+                // ...
+            }
 
-
-
-
+            override fun onError(error: FacebookException) {
+                //Log.d(TAG, "facebook:onError", error)
+                Toast.makeText(this@SignUp, "facebook:onError", Toast.LENGTH_SHORT).show()
+                // ...
+            }
+        })// ...
 
     }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        // Pass the activity result back to the Facebook SDK
+        callbackManager.onActivityResult(requestCode, resultCode, data)
+    }
+
 
     /*
     private fun signIn() {
@@ -207,5 +238,31 @@ class SignUp : AppCompatActivity() {
             }
     }
 */
+
+
+    private fun handleFacebookAccessToken(token: AccessToken) {
+        //Log.d(TAG, "handleFacebookAccessToken:$token")
+
+        val credential = FacebookAuthProvider.getCredential(token.token)
+        auth.signInWithCredential(credential)
+            .addOnCompleteListener(this) { task ->
+                if (task.isSuccessful) {
+                    // Sign in success, update UI with the signed-in user's information
+                    //Log.d(TAG, "signInWithCredential:success")
+                    val user = auth.currentUser
+                    Toast.makeText(this@SignUp, "Succesfull Log", Toast.LENGTH_SHORT).show()
+                    startActivity(Intent(this, ProfileFragment::class.java))
+                    //updateUI(user)
+                } else {
+                    // If sign in fails, display a message to the user.
+                    //Log.w(TAG, "signInWithCredential:failure", task.exception)
+                    Toast.makeText(this@SignUp, "Authentication failed.",
+                        Toast.LENGTH_SHORT).show()
+                    //updateUI(null)
+                }
+
+                // ...
+            }
+    }
 
 }

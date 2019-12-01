@@ -3,10 +3,17 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ProfileFragment">
+        tools:context=".fragment.ProfileFragment">
 
     <!-- TODO: Update blank fragment layout -->
 
+    <ImageView
+            android:id="@+id/image_user"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_profile_avatar_foreground">
+
+    </ImageView>
 
     <Button xmlns:android="http://schemas.android.com/apk/res/android"
             android:gravity="center"
@@ -26,9 +33,6 @@
             />
 
 
-
-
-
     <TextView
             android:id="@+id/Username_LogIn"
             android:layout_width="match_parent"
@@ -45,7 +49,14 @@
             tools:ignore="MissingConstraints"></TextView>
 
 
+    <com.facebook.login.widget.LoginButton
 
+            android:id="@+id/button_facebook_logout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="30dp" />
 
 
 

@@ -1,11 +1,13 @@
-package com.example.a_victorarmisen
+package com.example.a_victorarmisen.activity
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.example.a_victorarmisen.fragment.HomeFragment
+import com.example.a_victorarmisen.fragment.NewsFragment
+import com.example.a_victorarmisen.fragment.ProfileFragment
+import com.example.a_victorarmisen.R
 import com.google.android.gms.ads.MobileAds
 import kotlinx.android.synthetic.main.activity_main.*
-import com.google.android.gms.ads.initialization.InitializationStatus;
-import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.AdView
 
@@ -34,7 +36,8 @@ class MainActivity : AppCompatActivity() {
                     // TODO: Go to home
                     val fragmentManager = supportFragmentManager
                     val fragmentTransaction = fragmentManager.beginTransaction()
-                    val fragment = HomeFragment()
+                    val fragment =
+                        HomeFragment()
                     fragmentTransaction.replace(R.id.fragment_Container, fragment)
                     fragmentTransaction.commit()
                 }
@@ -42,7 +45,8 @@ class MainActivity : AppCompatActivity() {
                     // TODO: Go to home
                     val fragmentManager = supportFragmentManager
                     val fragmentTransaction = fragmentManager.beginTransaction()
-                    val fragment = NewsFragment()
+                    val fragment =
+                        NewsFragment()
                     fragmentTransaction.replace(R.id.fragment_Container, fragment)
                     fragmentTransaction.commit()
                 }
@@ -50,7 +54,8 @@ class MainActivity : AppCompatActivity() {
                     // TODO: Go to home
                     val fragmentManager = supportFragmentManager
                     val fragmentTransaction = fragmentManager.beginTransaction()
-                    val fragment = ProfileFragment()
+                    val fragment =
+                        ProfileFragment()
                     fragmentTransaction.replace(R.id.fragment_Container, fragment)
                     fragmentTransaction.commit()
                 }
