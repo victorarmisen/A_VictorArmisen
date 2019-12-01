@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "179419492885",
+    "firebase_url": "https://gamecompanion-victorarmisen.firebaseio.com",
+    "project_id": "gamecompanion-victorarmisen",
+    "storage_bucket": "gamecompanion-victorarmisen.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:179419492885:android:0c77e710d939457e34541c",
+        "android_client_info": {
+          "package_name": "com.example.a_victorarmisen"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "179419492885-8keldkg96ui15t1m4sq9ual39uc9u33p.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDrxObR-aGCN7TzJIC3XEuj-Pg8qgdR40I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "179419492885-8keldkg96ui15t1m4sq9ual39uc9u33p.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
