@@ -6,6 +6,7 @@ import com.example.a_victorarmisen.fragment.HomeFragment
 import com.example.a_victorarmisen.fragment.NewsFragment
 import com.example.a_victorarmisen.fragment.ProfileFragment
 import com.example.a_victorarmisen.R
+import com.example.a_victorarmisen.fragment.StreamsFragment
 import com.google.android.gms.ads.MobileAds
 import kotlinx.android.synthetic.main.activity_main.*
 import com.google.android.gms.ads.AdRequest
@@ -60,6 +61,14 @@ class MainActivity : AppCompatActivity() {
                     fragmentTransaction.commit()
                 }
                 // TODO: Other tabs
+                R.id.streams -> {
+                    // TODO: Go to home
+                    val fragmentManager = supportFragmentManager
+                    val fragmentTransaction = fragmentManager.beginTransaction()
+                    val fragment = StreamsFragment()
+                    fragmentTransaction.replace(R.id.fragment_Container, fragment)
+                    fragmentTransaction.commit()
+                }
             }
 
 

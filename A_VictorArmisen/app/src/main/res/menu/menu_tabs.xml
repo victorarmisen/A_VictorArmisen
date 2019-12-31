@@ -16,6 +16,10 @@
             android:id="@+id/profile"
             android:title="@string/tab_profile"
             android:icon="@drawable/ic_home_black_24dp"/>
+    <item
+            android:id="@+id/streams"
+            android:title="@string/tab_streams"
+            android:icon="@drawable/ic_home_black_24dp"/>
 
 
 </menu>
