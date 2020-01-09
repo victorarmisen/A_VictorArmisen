@@ -7,9 +7,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.a_victorarmisen.R
+import com.example.a_victorarmisen.model.TWStream
+import com.example.a_victorarmisen.model.TWStreamsResponse
 import com.example.a_victorarmisen.network.TwitchApiService
 import okhttp3.Call
 import okhttp3.Response
+import okhttp3.ResponseBody
 import java.io.IOException
 import javax.security.auth.callback.Callback
 
@@ -28,25 +31,28 @@ class StreamsFragment : Fragment() {
         //Code
 
         //TwitchApiService.endpoints.getStreams();
-        TwitchApiService.endpoints.getStreams().enqueue(object : okhttp3.Callback {
-            override fun onFailure(call: Call, e: IOException) {
+        TwitchApiService.endpoints.getStreams().enqueue(object : retrofit2.Callback<TWStreamsResponse> {
 
-            }
 
-            override fun onResponse(call: Call, response: Response) {
-                Log.i("StreamsFragment", "++ onResponse ++ ")
-                if(response.code() == 200) {
-                    //All good
-                    Log.i("StreamsFragment", response.body()?.string() ?: "Null body")
-                } else {
-                    //Problem
-                    Log.w("StreamsFragment", response.message())
+
+
+            override fun onResponse(call: retrofit2.Call<TWStreamsResponse>, response: retrofit2.Response<TWStreamsResponse>)
+                                                                        //No estoy seguro: retrofit2.Response
+            {
+                response.body()?.data?.let { streams ->
+                    for (stream in streams) {
+                        Log.i("MainActivity", "Title: ${stream.title} and image: ${stream.imageUrl} and username: ${stream.username}")
+                        Log.i("MainActivity", "Stream Url: https://www.twitch.tv/${stream.username}")
+                    }
                 }
-                response.body()
             }
 
+            override fun onFailure(call: retrofit2.Call<TWStreamsResponse>, t: Throwable) {
+                t.printStackTrace()
+            }
 
         })
+
     }
 
 }
