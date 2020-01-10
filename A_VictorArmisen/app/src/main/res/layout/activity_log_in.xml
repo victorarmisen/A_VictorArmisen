@@ -18,16 +18,13 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"></ImageView>
 
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Sign In"
+    android:textSize="30dp"   android:layout_marginTop="150dp"
+    ></TextView>
 
-    <Button
-            android:id="@+id/LOG_IN_BUTTON"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.1"
-
-            android:gravity="center"
-            android:text="LOG IN"
-            tools:ignore="MissingConstraints" />
 
     <EditText
             android:id="@+id/mail_Log"
@@ -35,6 +32,7 @@
             android:layout_height="50dp"
             android:gravity="center"
             android:inputType="text"
+            android:layout_marginTop="50dp"
             tools:ignore="MissingConstraints"
             ></EditText>
 
@@ -44,6 +42,17 @@
             android:layout_height="wrap_content"
             android:inputType="text"
             tools:ignore="MissingConstraints"></EditText>
+
+    <Button
+        android:id="@+id/LOG_IN_BUTTON"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.1"
+        android:layout_marginTop="30dp"
+
+        android:gravity="center"
+        android:text="LOG IN"
+        tools:ignore="MissingConstraints" />
 
 
 
