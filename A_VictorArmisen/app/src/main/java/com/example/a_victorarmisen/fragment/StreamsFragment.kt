@@ -6,11 +6,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.a_victorarmisen.R
+import com.example.a_victorarmisen.adapter.StreamsAdapter
 import com.example.a_victorarmisen.model.GamesResponse
 import com.example.a_victorarmisen.model.TWStream
 import com.example.a_victorarmisen.model.TWStreamsResponse
 import com.example.a_victorarmisen.network.TwitchApiService
+import kotlinx.android.synthetic.main.fragment_streams.*
 import okhttp3.Call
 import okhttp3.Response
 import okhttp3.ResponseBody
@@ -29,16 +33,26 @@ class StreamsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         //Code
+        val adapter = StreamsAdapter(ArrayList())
+        recyclerview.layoutManager = GridLayoutManager(requireContext(), 2)
+        recyclerview.adapter = adapter
+
 
         //TwitchApiService.endpoints.getStreams();
         TwitchApiService.endpoints.getStreams().enqueue(object : retrofit2.Callback<TWStreamsResponse> {
 
             override fun onResponse(call: retrofit2.Call<TWStreamsResponse>, response: retrofit2.Response<TWStreamsResponse>) {
+
                 Log.i("StreamsFragment", "++ onResponse ++")
+
                 if (response.isSuccessful()) {
+
                     Log.i("StreamFragment", response.body()?.toString() ?: "Null body")
+
                     val streams = response.body()?.data
+
                     streams?.forEach {
                         //Get games
                         it.gameId?.let { gameId ->
@@ -59,6 +73,11 @@ class StreamsFragment : Fragment() {
                                             }
 
                                         }
+
+                                        adapter.list.add(games?.firstOrNull()?.name ?: "")
+                                        adapter.notifyDataSetChanged()
+
+
                                         Log.i("StreamsFragment", "Got games $games")
                                         Log.i("StreamsFragment", "Got streams with games $streams")
                                     } else {
