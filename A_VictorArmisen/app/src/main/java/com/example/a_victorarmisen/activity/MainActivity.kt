@@ -2,11 +2,8 @@ package com.example.a_victorarmisen.activity
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.example.a_victorarmisen.fragment.HomeFragment
-import com.example.a_victorarmisen.fragment.NewsFragment
-import com.example.a_victorarmisen.fragment.ProfileFragment
 import com.example.a_victorarmisen.R
-import com.example.a_victorarmisen.fragment.StreamsFragment
+import com.example.a_victorarmisen.fragment.*
 import com.google.android.gms.ads.MobileAds
 import kotlinx.android.synthetic.main.activity_main.*
 import com.google.android.gms.ads.AdRequest
@@ -66,6 +63,15 @@ class MainActivity : AppCompatActivity() {
                     val fragmentManager = supportFragmentManager
                     val fragmentTransaction = fragmentManager.beginTransaction()
                     val fragment = StreamsFragment()
+                    fragmentTransaction.replace(R.id.fragment_Container, fragment)
+                    fragmentTransaction.commit()
+                }
+
+                R.id.chat -> {
+                    // TODO: Go to home
+                    val fragmentManager = supportFragmentManager
+                    val fragmentTransaction = fragmentManager.beginTransaction()
+                    val fragment = ChatFragment()
                     fragmentTransaction.replace(R.id.fragment_Container, fragment)
                     fragmentTransaction.commit()
                 }

@@ -9,16 +9,6 @@
         android:orientation="vertical"
         tools:context=".activity.MainActivity">
 
-
-    <ImageView
-        android:src = "@drawable/Imagen1"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginBottom="0dp">
-
-    </ImageView>
-
-
 <FrameLayout
         android:id="@+id/fragment_Container"
         android:layout_width="match_parent"
@@ -36,6 +26,8 @@
             ads:adSize="BANNER"
             ads:adUnitId="ca-app-pub-3940256099942544/6300978111">
     </com.google.android.gms.ads.AdView>
+
+
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/bottomNavigationView"

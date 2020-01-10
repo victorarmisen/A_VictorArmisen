@@ -9,9 +9,13 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.recyclerview.widget.GridLayoutManager
 import com.example.a_victorarmisen.R
+import com.example.a_victorarmisen.adapter.NewsAdapter
+import com.example.a_victorarmisen.adapter.StreamsAdapter
 import com.google.firebase.firestore.FirebaseFirestore
 import com.squareup.picasso.Picasso
+import kotlinx.android.synthetic.main.fragment_streams.*
 
 
 /**
@@ -31,6 +35,11 @@ class NewsFragment : Fragment() {
         val titulo = view.findViewById(R.id.titulo1) as TextView
 
 
+        //Code
+        //val adapter = NewsAdapter(ArrayList())
+        //recyclerview.layoutManager = GridLayoutManager(requireContext(), 2)
+        //recyclerview.adapter = adapter
+
         val db = FirebaseFirestore.getInstance()
 
         val docRef = db.collection("news_").document("NEWS_ID")
@@ -42,6 +51,7 @@ class NewsFragment : Fragment() {
                     //image.set(document.get("imageURL"))
                     Picasso.get().load(document.get("imageURL").toString()).into(image);
                     titulo.setText(document.get("titulo1").toString())
+                    //adapter.list.add(titulo.toString())
 
                 } else {
                     //Log.d(TAG, "No such document")
@@ -50,7 +60,6 @@ class NewsFragment : Fragment() {
             .addOnFailureListener { exception ->
                 //Log.d(TAG, "get failed with ", exception)
             }
-
 
 
         return view;
