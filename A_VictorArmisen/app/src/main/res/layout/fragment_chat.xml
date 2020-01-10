@@ -8,15 +8,19 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
+
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="10dp"
+            android:fontFamily="serif"
             android:text="Chat"
             android:textSize="50dp">
 
@@ -27,6 +31,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="130dp"
+            android:fontFamily="serif"
             android:text="** Dark_killer"
             android:textSize="20dp">
 
@@ -37,6 +42,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="160dp"
+            android:fontFamily="serif"
             android:text="***** Leo32"
             android:textSize="20dp">
 
@@ -47,21 +53,22 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="80dp"
-            android:text="Group1">
-        </Button>
+            android:fontFamily="serif"
+            android:text="Group1"></Button>
 
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="190dp"
-            android:text="Group2">
-        </Button>
+            android:fontFamily="serif"
+            android:text="Group2"></Button>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="240dp"
+            android:fontFamily="serif"
             android:text="**** 93483048"
             android:textSize="20dp">
 
@@ -72,6 +79,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="280dp"
+            android:fontFamily="serif"
             android:text="*** 0092992"
             android:textSize="20dp">
 
@@ -79,16 +87,17 @@
 
         <Button
             android:layout_width="match_parent"
-            android:layout_marginTop="310dp"
             android:layout_height="wrap_content"
-            android:text="Group3">
-        </Button>
+            android:layout_marginTop="310dp"
+            android:fontFamily="serif"
+            android:text="Group3"></Button>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="360dp"
+            android:fontFamily="serif"
             android:text="*** 73773"
             android:textSize="20dp">
 
@@ -99,6 +108,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="390dp"
+            android:fontFamily="serif"
             android:text="******** 213123"
             android:textSize="20sp">
 
@@ -109,10 +119,9 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="420dp"
+            android:fontFamily="serif"
             android:text="******** 213123"
-            android:textSize="20sp">
-        </TextView>
-
+            android:textSize="20sp"></TextView>
 
 
         <TextView
@@ -120,14 +129,11 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="450sp"
+            android:fontFamily="serif"
             android:text="******** 54645"
-            android:textSize="20sp">
-        </TextView>
-
-
+            android:textSize="20sp"></TextView>
 
     </FrameLayout>
-
 
 </RelativeLayout>
 

@@ -15,44 +15,47 @@
 
     </ImageView>
 
-    <Button xmlns:android="http://schemas.android.com/apk/res/android"
-            android:gravity="center"
-            android:id="@+id/LOG_OUT"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="400dp"
+    <Button
+        android:id="@+id/LOG_OUT"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="400dp"
+        android:fontFamily="serif"
 
-            android:text="LOG_OUT"
+        android:gravity="center"
 
-            tools:ignore="MissingConstraints" />
+        android:text="LOG_OUT"
+        tools:ignore="MissingConstraints" />
 
-    <Button xmlns:android="http://schemas.android.com/apk/res/android"
-            android:id="@+id/button_send"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="400dp"
-            android:text="SignUp"
-            />
+    <Button
+        android:id="@+id/button_send"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="400dp"
+        android:fontFamily="serif"
+        android:text="SignUp" />
 
 
     <TextView
-            android:id="@+id/Username_LogIn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="120dp"
-            android:text="Username">
-    </TextView>
+        android:id="@+id/Username_LogIn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="120dp"
+        android:fontFamily="serif"
+        android:gravity="center"
+        android:text="Username"></TextView>
+
     <TextView
-            android:id="@+id/Mail_LogIn"
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:text="null"
-            android:gravity="center"
-            tools:ignore="MissingConstraints"></TextView>
+        android:id="@+id/Mail_LogIn"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:fontFamily="serif"
+        android:gravity="center"
+        android:text="null"
+        tools:ignore="MissingConstraints"></TextView>
 
 
 

@@ -34,12 +34,11 @@
 
     <TextView
 
-            android:text="Sign in to see the news"
-            android:id="@+id/titulo1"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
-        >
+        android:id="@+id/titulo1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:text="Sign in to see the news">
 
     </TextView>
 

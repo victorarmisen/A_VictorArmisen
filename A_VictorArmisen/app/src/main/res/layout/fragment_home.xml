@@ -11,10 +11,18 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="300dp"
-        android:textSize="20dp"
-        android:text="Welcome to the Hunt Companion App.">
+        android:layout_marginTop="150dp"
+        android:fontFamily="serif"
+        android:text="Welcome to the Hunt Companion App."
+        android:textSize="20dp">
 
     </TextView>
+    <ImageView
+        android:layout_width="349dp"
+        android:layout_height="299dp"
+        android:src="@drawable/dialognew"
+        android:layout_marginTop="150dp"
+        android:layout_gravity="center_horizontal">
 
+    </ImageView>
 </FrameLayout>
