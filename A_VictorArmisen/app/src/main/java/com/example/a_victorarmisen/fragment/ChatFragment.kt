@@ -1,6 +1,7 @@
 package com.example.a_victorarmisen.fragment
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -33,6 +34,7 @@ class ChatFragment : Fragment() {
             sendMessage(text_send.text.toString())
         }
 
+
         recyclerviewChat.layoutManager = LinearLayoutManager(requireContext())
         recyclerviewChat.adapter = adapter
 
@@ -50,6 +52,7 @@ class ChatFragment : Fragment() {
                     //adapter pasar lista de mensaje.
                     adapter.list = messages
                     adapter.notifyDataSetChanged()
+                    Log.i("ChatFragment", messages[3].text.toString())
                 }
                 .addOnFailureListener {
 

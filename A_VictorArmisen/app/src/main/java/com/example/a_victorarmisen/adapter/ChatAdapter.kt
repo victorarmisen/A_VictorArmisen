@@ -25,7 +25,7 @@ class ChatAdapter(var list: List<ChatMessage>) : RecyclerView.Adapter<ChatAdapte
     }
 
     override fun onBindViewHolder(holder: ChatAdapter.ViewHolder, position: Int) {
-            holder.textChat.text = list[position].text.toString()
+            holder.textChat.text = list[position].text
     }
 
 
