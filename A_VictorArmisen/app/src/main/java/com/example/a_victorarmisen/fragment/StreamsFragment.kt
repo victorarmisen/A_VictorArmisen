@@ -10,12 +10,11 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.a_victorarmisen.R
 import com.example.a_victorarmisen.adapter.StreamsAdapter
-import com.example.a_victorarmisen.model.GamesResponse
-import com.example.a_victorarmisen.model.TWStream
-import com.example.a_victorarmisen.model.TWStreamsResponse
+import com.example.a_victorarmisen.model.*
 import com.example.a_victorarmisen.network.TwitchApiService
 import kotlinx.android.synthetic.main.fragment_streams.*
 import okhttp3.Call
+import okhttp3.Request
 import okhttp3.Response
 import okhttp3.ResponseBody
 import java.io.IOException
@@ -42,7 +41,27 @@ class StreamsFragment : Fragment() {
 
         //TwitchApiService.endpoints.getStreams();
         TwitchApiService.endpoints.getStreams().enqueue(object : retrofit2.Callback<TWStreamsResponse> {
+            override fun onFailure(call: retrofit2.Call<TWStreamsResponse>, t: Throwable) {
 
+                    t.printStackTrace()
+
+            }
+
+            override fun onResponse(call: retrofit2.Call<TWStreamsResponse>, response: retrofit2.Response<TWStreamsResponse>) {
+                response.body()?.data?.let { streams ->
+                    for (stream in streams) {
+
+                        adapter.list.add(stream?.title.toString())
+                        Log.i("MainActivity", "Title: ${stream.title} and image: ${stream.thumbnailUrl} and username: ${stream.username}")
+                        Log.i("MainActivity", "Stream Url: https://www.twitch.tv/${stream.username}")
+                    }
+
+
+                    adapter.notifyDataSetChanged()
+
+                }
+            }
+            /*
             override fun onResponse(call: retrofit2.Call<TWStreamsResponse>, response: retrofit2.Response<TWStreamsResponse>) {
 
                 Log.i("StreamsFragment", "++ onResponse ++")
@@ -51,13 +70,16 @@ class StreamsFragment : Fragment() {
 
                     Log.i("StreamFragment", response.body()?.toString() ?: "Null body")
 
+                    //Get games of the streams
                     val streams = response.body()?.data
-
+                    //For each to get them
                     streams?.forEach {
                         //Get games
                         it.gameId?.let { gameId ->
                             TwitchApiService.endpoints.getGames(gameId).enqueue(object : retrofit2.Callback<GamesResponse>
                             {
+
+
                                 override fun onFailure(call: retrofit2.Call<GamesResponse>, t: Throwable) {
                                     Log.w("StreamsFragment",t)
                                 }
@@ -73,6 +95,7 @@ class StreamsFragment : Fragment() {
                                             }
 
                                         }
+
 
                                         adapter.list.add(games?.firstOrNull()?.name ?: "")
                                         adapter.notifyDataSetChanged()
@@ -90,6 +113,13 @@ class StreamsFragment : Fragment() {
                         }
 
                     }
+
+
+
+
+
+
+
 
                 }
                 /*
@@ -109,7 +139,21 @@ class StreamsFragment : Fragment() {
 
         })
 
-    }
+        */
+
+
+
+
+
+
+
+
+})
+
+}
+
+
+
 }
 
 
