@@ -21,7 +21,7 @@ data class TWStream(
 }
 
 
-data class TWStreamResponse(
-        var data: ArrayList<TWStream>? = null
+data public class TWStreamResponse(
+        public var data: ArrayList<TWStream>? = null
 )
 

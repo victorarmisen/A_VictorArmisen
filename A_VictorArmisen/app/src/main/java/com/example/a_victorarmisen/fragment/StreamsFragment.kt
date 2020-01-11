@@ -6,12 +6,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.a_victorarmisen.R
 import com.example.a_victorarmisen.adapter.StreamsAdapter
 import com.example.a_victorarmisen.model.*
 import com.example.a_victorarmisen.network.TwitchApiService
 import kotlinx.android.synthetic.main.fragment_streams.*
+import kotlinx.coroutines.launch
+import retrofit2.HttpException
+import java.io.IOException
 
 class StreamsFragment : Fragment() {
 
@@ -23,6 +27,10 @@ class StreamsFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_streams, container, false)
     }
 
+
+
+
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -30,6 +38,51 @@ class StreamsFragment : Fragment() {
         val adapter = StreamsAdapter(ArrayList())
         recyclerview.layoutManager = GridLayoutManager(requireContext(), 2)
         recyclerview.adapter = adapter
+
+/*
+        suspend fun addGames(streams: List<TWStream>): List<TWStream> {
+            val gameIds = streams.map { it.gameId ?: ""}
+
+            //Get games
+            val gamesReponse = TwitchApiService.endpoints.getGames(gameIds)
+            val games = gamesReponse.data ?: emptyList()
+            //Replace gameId->game
+            streams.forEach { stream -> stream.game == games.firstOrNull{it.id == stream.gameId } }
+            return streams
+
+        }
+
+
+        //Get streams coroutines
+        lifecycleScope.launch {
+            try {
+                val streamsResponse = TwitchApiService.endpoints.getStreams()
+                var streams = streamsResponse.data
+                //Add games to Streams
+                streams = addGames(streams)
+                //Set to StreamsAdapter
+                adapter.list = ArrayList(streams.map {it.game?.name ?: ""})
+                adapter.notifyDataSetChanged()
+
+
+            } catch (e: IOException) {
+
+            }
+
+            catch (e: HttpException) {
+
+            }
+
+            //Log.i
+
+
+        }
+
+
+ */
+
+
+
 
 
         //TwitchApiService.endpoints.getStreams();

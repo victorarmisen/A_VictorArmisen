@@ -16,7 +16,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var mAdView : AdView
 
     override fun onBackPressed() {
-        
+
         //Dialog
         AlertDialog.Builder(this)
                 .setTitle("Hello")

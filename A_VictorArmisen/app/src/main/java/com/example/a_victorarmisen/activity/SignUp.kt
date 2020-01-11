@@ -7,9 +7,11 @@ import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import androidx.lifecycle.Observer
 import com.example.a_victorarmisen.R
 import com.example.a_victorarmisen.fragment.ProfileFragment
 import com.example.a_victorarmisen.util.UserMode
+import com.example.a_victorarmisen.viewmodels.RegisterViewModel
 import com.facebook.*
 import com.google.firebase.auth.FacebookAuthProvider
 import com.facebook.login.LoginResult
@@ -27,6 +29,9 @@ class SignUp : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
     private lateinit var callbackManager: CallbackManager
 
+    //VIEWMODEL
+    lateinit var viewModel: RegisterViewModel
+
 
     override fun onCreate(savedInstanceState: Bundle?)
     {
@@ -36,6 +41,23 @@ class SignUp : AppCompatActivity() {
 
 
         auth = FirebaseAuth.getInstance()
+
+
+        //VIEWMODEL
+        viewModel = RegisterViewModel()
+
+        viewModel.isUserCreated.observe(this, Observer {isUserCreated->
+            if(isUserCreated) {
+                //Toast.text
+                Toast.makeText(
+                        username_current.context,
+                "User Created Succesfully!",
+                        Toast.LENGTH_LONG
+                ).show()
+                //Close
+                finish()
+            }
+        })
 
 
 
@@ -69,6 +91,8 @@ class SignUp : AppCompatActivity() {
             val mail = eEmail.getText().toString()
             val pass = pPass.getText().toString()
 
+            //Validations view model
+            //To do este codigo se va a RegisterViewModel
             auth.createUserWithEmailAndPassword(mail, pass)
                 .addOnCompleteListener(this) { task ->
                     if (task.isSuccessful) {
@@ -83,6 +107,8 @@ class SignUp : AppCompatActivity() {
                             )
 
                         val db = FirebaseFirestore.getInstance()
+                        //  if (user != null) {
+
                         if (user != null) {
                             db.collection("users")
                                 .document(user.uid)
