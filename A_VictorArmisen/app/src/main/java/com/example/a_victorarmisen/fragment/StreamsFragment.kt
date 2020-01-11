@@ -7,18 +7,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.a_victorarmisen.R
 import com.example.a_victorarmisen.adapter.StreamsAdapter
 import com.example.a_victorarmisen.model.*
 import com.example.a_victorarmisen.network.TwitchApiService
 import kotlinx.android.synthetic.main.fragment_streams.*
-import okhttp3.Call
-import okhttp3.Request
-import okhttp3.Response
-import okhttp3.ResponseBody
-import java.io.IOException
-import javax.security.auth.callback.Callback
 
 class StreamsFragment : Fragment() {
 
@@ -40,24 +33,25 @@ class StreamsFragment : Fragment() {
 
 
         //TwitchApiService.endpoints.getStreams();
-        TwitchApiService.endpoints.getStreams().enqueue(object : retrofit2.Callback<TWStreamsResponse> {
-            override fun onFailure(call: retrofit2.Call<TWStreamsResponse>, t: Throwable) {
+        TwitchApiService.endpoints.getStreams().enqueue(object : retrofit2.Callback<StreamsResponse> {
+            override fun onFailure(call: retrofit2.Call<StreamsResponse>, t: Throwable) {
 
                     t.printStackTrace()
 
             }
 
-            override fun onResponse(call: retrofit2.Call<TWStreamsResponse>, response: retrofit2.Response<TWStreamsResponse>) {
+            override fun onResponse(call: retrofit2.Call<StreamsResponse>, response: retrofit2.Response<StreamsResponse>) {
                 response.body()?.data?.let { streams ->
                     for (stream in streams) {
 
                         adapter.list.add(stream?.title.toString())
+                        adapter.notifyDataSetChanged()
                         Log.i("MainActivity", "Title: ${stream.title} and image: ${stream.thumbnailUrl} and username: ${stream.username}")
                         Log.i("MainActivity", "Stream Url: https://www.twitch.tv/${stream.username}")
                     }
 
 
-                    adapter.notifyDataSetChanged()
+
 
                 }
             }
