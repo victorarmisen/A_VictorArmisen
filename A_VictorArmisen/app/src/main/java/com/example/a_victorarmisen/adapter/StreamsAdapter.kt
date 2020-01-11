@@ -1,16 +1,18 @@
 package com.example.a_victorarmisen.adapter
 
 import android.content.Intent
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.a_victorarmisen.R
+import com.example.a_victorarmisen.activity.MainActivity
 import com.example.a_victorarmisen.activity.StreamsDetailActivity
-import com.example.a_victorarmisen.model.StreamModel
+import com.example.a_victorarmisen.model.TWStream
 import kotlinx.android.synthetic.main.item_stream.view.*
 
-class StreamsAdapter(var list: ArrayList<StreamModel>) : RecyclerView.Adapter<StreamsAdapter.ViewHolder>() {
+class StreamsAdapter(var list: ArrayList<String>) : RecyclerView.Adapter<StreamsAdapter.ViewHolder>() {
 
     class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
         val button = itemView.button_Stream
@@ -27,14 +29,17 @@ class StreamsAdapter(var list: ArrayList<StreamModel>) : RecyclerView.Adapter<St
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val stream = list[position]
-        holder.button.text = list[position].game?.name
+        holder.button.text = list[position]
+        Log.i("StreamsAdapter", "Hello")
 
-        holder.itemView.setOnClickListener {
+        holder.button.setOnClickListener {
 
             val intent = Intent(holder.button.context, StreamsDetailActivity::class.java)
-            intent.putExtra("streamId", stream.id)
-            intent.putExtra("stream", stream.userId)
+            intent.putExtra("name_stream", stream)
+            Log.i("StreamsAdapter", "Hello")
             holder.button.context.startActivity(intent)
+
+
 
         }
 

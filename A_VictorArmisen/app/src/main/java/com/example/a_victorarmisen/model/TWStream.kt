@@ -2,7 +2,7 @@ package com.example.a_victorarmisen.model
 
 import com.google.gson.annotations.SerializedName
 
-data class StreamModel(
+data class TWStream(
         var id: String? = null,
         @SerializedName("user_id") val userId: String? = null,
         @SerializedName("game_id") val gameId: String? = null,
@@ -21,7 +21,7 @@ data class StreamModel(
 }
 
 
-data class StreamsResponse(
-        var data: ArrayList<StreamModel>? = null
+data class TWStreamResponse(
+        var data: ArrayList<TWStream>? = null
 )
 

@@ -1,7 +1,7 @@
 package com.example.a_victorarmisen.network
 
 import com.example.a_victorarmisen.model.GamesResponse
-import com.example.a_victorarmisen.model.StreamsResponse
+import com.example.a_victorarmisen.model.TWStreamResponse
 import com.example.a_victorarmisen.model.UserResponse
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -14,7 +14,7 @@ interface TwitchApiService {
 
     @Headers("Client-ID:  $clientId")
     @GET("streams")
-    fun getStreams(@Query("game_id") gameId: String? = null): retrofit2.Call<StreamsResponse>
+    fun getStreams(@Query("game_id") gameId: String? = null): retrofit2.Call<TWStreamResponse>
 
     @Headers("Client-ID: $clientId")
     @GET("games")

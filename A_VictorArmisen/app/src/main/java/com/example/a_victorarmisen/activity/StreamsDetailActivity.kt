@@ -2,6 +2,8 @@ package com.example.a_victorarmisen.activity
 
 import android.os.Bundle
 import android.os.PersistableBundle
+import android.widget.EditText
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.example.a_victorarmisen.R
 
@@ -11,7 +13,10 @@ public class StreamsDetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_streamsdetail)
 
+        val stream_name_textView = findViewById<TextView>(R.id.stream_name) as TextView;
+        val get_intent_name = getIntent().getStringExtra("stream_name")
 
+        stream_name_textView.setText(get_intent_name)
 
 
     }

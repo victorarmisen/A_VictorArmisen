@@ -33,24 +33,26 @@ class StreamsFragment : Fragment() {
 
 
         //TwitchApiService.endpoints.getStreams();
-        TwitchApiService.endpoints.getStreams().enqueue(object : retrofit2.Callback<StreamsResponse> {
-            override fun onFailure(call: retrofit2.Call<StreamsResponse>, t: Throwable) {
+        TwitchApiService.endpoints.getStreams().enqueue(object : retrofit2.Callback<TWStreamResponse> {
+            override fun onFailure(call: retrofit2.Call<TWStreamResponse>, t: Throwable) {
 
                     t.printStackTrace()
 
             }
 
-            override fun onResponse(call: retrofit2.Call<StreamsResponse>, response: retrofit2.Response<StreamsResponse>) {
+            override fun onResponse(call: retrofit2.Call<TWStreamResponse>, response: retrofit2.Response<TWStreamResponse>) {
                 response.body()?.data?.let { streams ->
                     for (stream in streams) {
 
                         adapter.list.add(stream?.title.toString())
-                        adapter.notifyDataSetChanged()
+
+
+
                         Log.i("MainActivity", "Title: ${stream.title} and image: ${stream.thumbnailUrl} and username: ${stream.username}")
                         Log.i("MainActivity", "Stream Url: https://www.twitch.tv/${stream.username}")
                     }
 
-
+                    adapter.notifyDataSetChanged()
 
 
                 }
