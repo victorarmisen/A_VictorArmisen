@@ -1,6 +1,7 @@
 package com.example.a_victorarmisen.activity
 
 import android.os.Bundle
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.example.a_victorarmisen.R
 import com.example.a_victorarmisen.fragment.*
@@ -14,13 +15,35 @@ class MainActivity : AppCompatActivity() {
 
     lateinit var mAdView : AdView
 
-    override fun onCreate(savedInstanceState: Bundle?)
-    {
+    override fun onBackPressed() {
+        
+        //Dialog
+        AlertDialog.Builder(this)
+                .setTitle("Hello")
+                .setMessage("Are you sure you want to exit?")
+                .setNegativeButton("No") { dialog, buttonId ->
+                    dialog.dismiss()
+
+                }
+                .setPositiveButton("Confirm") {dialog, buttonId->
+                    dialog.dismiss()
+                    finish()
+                }
+                .show()
+
+
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
 
         //179419492885-8keldkg96ui15t1m4sq9ual39uc9u33p.apps.googleusercontent.com
+
+
+
+
 
         MobileAds.initialize(this) { }
         mAdView = findViewById(R.id.adView)
