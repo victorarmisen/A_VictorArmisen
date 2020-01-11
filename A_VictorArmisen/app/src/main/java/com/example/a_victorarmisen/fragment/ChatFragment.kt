@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.a_victorarmisen.R
 import com.example.a_victorarmisen.adapter.ChatAdapter
 import com.example.a_victorarmisen.model.ChatMessage
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.fragment_chat.*
 import kotlinx.android.synthetic.main.item_chat.*
@@ -62,7 +63,8 @@ class ChatFragment : Fragment() {
 
     private fun sendMessage(text: String) {
 
-        val message = ChatMessage(text = text)
+        val message = ChatMessage(text = text, timestamp = System.currentTimeMillis(), userId = FirebaseAuth.getInstance()
+                .currentUser?.uid)
         FirebaseFirestore.getInstance()
                 .collection("chat")
                 .add(message)
