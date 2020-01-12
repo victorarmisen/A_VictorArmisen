@@ -67,13 +67,9 @@ class SignUp : AppCompatActivity() {
 
         ///////////////
 
-
-
         val uUser = findViewById<EditText>(R.id.username_current) as EditText;
         val eEmail = findViewById<EditText>(R.id.mail_current) as EditText;
         val pPass = findViewById<EditText>(R.id.password) as EditText;
-
-
 
         //ViewModel begins
         Button_SignUp.setOnClickListener {
