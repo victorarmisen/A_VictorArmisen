@@ -38,11 +38,13 @@ class StreamsAdapter(var list: ArrayList<TWStream>) : RecyclerView.Adapter<Strea
             intent.putExtra("name_stream", stream.username)
             intent.putExtra("game_stream", stream.game?.name)
             intent.putExtra("video_stream", stream.video?.url)
+            intent.putExtra("viewcount_stream", stream.tagMain?.view_count.toString())
 
 
             Log.i("StreamsAdapter", "Hello")
             Log.i("StreamsFragment", "STREAM VIDEO NAME: " + stream.video)
             Log.i("StreamsFragment", "STREAM GAME NAME: " + stream.game)
+            Log.i("StreamsFragment", "STREAM TAGS NAME: " + stream.tagMain)
             holder.button.context.startActivity(intent)
 
 

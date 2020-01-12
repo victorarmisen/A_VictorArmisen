@@ -29,16 +29,19 @@ public class StreamsDetailActivity : AppCompatActivity() {
         val stream_game_textView = findViewById<TextView>(R.id.game_stream) as TextView;
         val stream_video = findViewById<VideoView>(R.id.video_stream) as VideoView;
         val stream_prueba_textView = findViewById<TextView>(R.id.prueba_URL_video) as TextView;
+        val stream_viewcount_textView = findViewById<TextView>(R.id.viewcount_streamdetail) as TextView;
 
         val get_intent_name = intent.getStringExtra("name_stream")
         val get_intent_game = intent.getStringExtra("game_stream")
         val get_intent_video = intent.getStringExtra("video_stream")
+        val get_intent_viewcount = intent.getStringExtra("viewcount_stream")
 
         //Log.i("StreamsDetailActivity",get_intent_video);
 
-        stream_name_textView.setText(get_intent_name)
-        stream_game_textView.setText(get_intent_game)
-        stream_prueba_textView.setText(get_intent_video)
+        stream_name_textView.setText("Username: " + get_intent_name)
+        stream_game_textView.setText("Game playing: " + get_intent_game)
+        stream_prueba_textView.setText("Video URL: " + get_intent_video)
+        stream_viewcount_textView.setText("Viewcount: " + get_intent_viewcount)
 
         //Video
 

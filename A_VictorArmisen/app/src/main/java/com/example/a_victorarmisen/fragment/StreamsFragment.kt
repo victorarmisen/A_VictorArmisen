@@ -84,9 +84,6 @@ class StreamsFragment : Fragment() {
  */
 
 
-
-
-
         //TwitchApiService.endpoints.getStreams();
         TwitchApiService.endpoints.getStreams().enqueue(object : retrofit2.Callback<TWStreamResponse> {
             override fun onFailure(call: retrofit2.Call<TWStreamResponse>, t: Throwable) {
@@ -148,6 +145,31 @@ class StreamsFragment : Fragment() {
                                             videos?.forEach { video ->
                                                 //if(stream.videoId == video.id){
                                                     stream.video = video
+
+                                                //}
+                                            }
+                                        }
+                                    }
+                                }
+
+                            })
+
+                        }
+
+                        //Tag
+                        stream.userId?.let {userId->
+                            TwitchApiService.endpoints.getTags(userId).enqueue(object : retrofit2.Callback<UsersResponse> {
+                                override fun onFailure(call: Call<UsersResponse>, t: Throwable) {
+                                    Log.w("StreamsFragment",t)
+                                }
+
+                                override fun onResponse(call: Call<UsersResponse>, response: Response<UsersResponse>) {
+                                    if(response.isSuccessful()) {
+                                        val tags = response.body()?.data
+                                        str?.forEach { stream ->
+                                            tags?.forEach { tag ->
+                                                //if(stream.videoId == video.id){
+                                                stream.tagMain = tag
 
                                                 //}
                                             }
