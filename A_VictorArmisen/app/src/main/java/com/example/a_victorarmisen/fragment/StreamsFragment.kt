@@ -107,6 +107,7 @@ class StreamsFragment : Fragment() {
                         Log.i("MainActivity", "Title: ${stream.title} and image: ${stream.thumbnailUrl} and username: ${stream.username}")
                         Log.i("MainActivity", "Stream Url: https://www.twitch.tv/${stream.username}")
 
+
                         //Games
                         stream.gameId?.let { gameId ->
                             TwitchApiService.endpoints.getGames(gameId).enqueue(object : retrofit2.Callback<GamesResponse>{
@@ -121,7 +122,6 @@ class StreamsFragment : Fragment() {
                                             games?.forEach { game->
                                                 if(stream.gameId == game.id){
                                                     stream.game = game
-
                                                 }
                                             }
 
@@ -135,29 +135,32 @@ class StreamsFragment : Fragment() {
 
 
                         //Video
-                        stream.gameId?.let { gameId ->
-                            TwitchApiService.endpoints.getVideos(gameId).enqueue(object : retrofit2.Callback<VideoResponse> {
+                        stream.userId?.let { id ->
+                            TwitchApiService.endpoints.getVideos(id).enqueue(object : retrofit2.Callback<VideoResponse> {
                                 override fun onFailure(call: Call<VideoResponse>, t: Throwable) {
                                     Log.w("StreamsFragment",t)
                                 }
 
                                 override fun onResponse(call: Call<VideoResponse>, response: Response<VideoResponse>) {
-                                    if(response.isSuccessful()) {
+                                    if(response.isSuccessful())
+                                    {
                                         val videos = response.body()?.data
                                         str?.forEach { stream ->
                                             videos?.forEach { video ->
                                                 //if(stream.videoId == video.id){
-                                                    stream.video = video
-
+                                                stream.video = video
+                                                //Log.i("StreamsFragment", "STREAM_FRAGMENT____" + stream.video.toString())
                                                 //}
                                             }
                                         }
                                     }
+
                                 }
 
                             })
 
                         }
+
 
 
                         adapter.list.add(stream)

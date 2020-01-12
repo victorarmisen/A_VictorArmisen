@@ -31,7 +31,7 @@ public class StreamsDetailActivity : AppCompatActivity() {
         stream_prueba_textView.setText(get_intent_video)
 
         //Video
-        //stream_video_textView.setVideoPath()
+        //stream_video_textView.setVideoURI()
 
     }
 }
