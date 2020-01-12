@@ -34,32 +34,51 @@ class ChatFragment : Fragment() {
         sendButtonChat.setOnClickListener {
             sendMessage(text_send.text.toString())
         }
-
-
+        
         recyclerviewChat.layoutManager = LinearLayoutManager(requireContext())
         recyclerviewChat.adapter = adapter
 
-        getMessages()
+        subscribeToMessages()
+
+
 
     }
-
+/*
     private fun getMessages() {
 
         FirebaseFirestore.getInstance()
                 .collection("chat")
                 .get()
                 .addOnSuccessListener {
-                    val messages = it.toObjects(ChatMessage::class.java)
+                    //val messages = it.toObjects(ChatMessage::class.java)
+                    val messages = it.documents.map { it.toObject(ChatMessage::class.java) ?: ChatMessage() }
                     //adapter pasar lista de mensaje.
                     adapter.list = messages
                     adapter.notifyDataSetChanged()
-                    Log.i("ChatFragment", messages[3].text.toString())
+                    Log.i("ChatFragment", messages.toString())
                 }
                 .addOnFailureListener {
-
+                    it.printStackTrace()
                 }
 
     }
+*/
+
+    private fun subscribeToMessages() {
+        FirebaseFirestore.getInstance()
+                .collection("chat")
+                .addSnapshotListener { newQuerySnapshot, firebaseFirestoreException ->
+                    //New message added
+                    val messages = newQuerySnapshot?.toObjects(ChatMessage::class.java) ?: emptyList()
+                    //adapter pasar lista de mensaje.
+                    adapter.list = messages
+                    adapter.notifyDataSetChanged()
+                    Log.i("ChatFragment", messages.toString())
+                }
+    }
+
+
+
 
     private fun sendMessage(text: String) {
 
@@ -69,7 +88,7 @@ class ChatFragment : Fragment() {
                 .collection("chat")
                 .add(message)
                 .addOnSuccessListener {
-                    getMessages()
+
                 }
                 .addOnFailureListener {
 
