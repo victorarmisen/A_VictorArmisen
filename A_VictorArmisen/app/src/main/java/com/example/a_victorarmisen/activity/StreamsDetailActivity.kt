@@ -41,7 +41,7 @@ public class StreamsDetailActivity : AppCompatActivity() {
         stream_prueba_textView.setText(get_intent_video)
 
         //Video
-<<<<<<< HEAD
+
 
 /*
         //stream_video.setVideoPath(get_intent_video)
@@ -62,9 +62,9 @@ public class StreamsDetailActivity : AppCompatActivity() {
 
 
 
-=======
+
         //stream_video_textView.setVideoPath()
->>>>>>> parent of 8a42e7c... Video API working
+
 
     }
 }
