@@ -23,7 +23,7 @@ interface TwitchApiService {
 
     @Headers("Client-ID: $clientId")
     @GET("videos")
-    fun getVideos(@Query("id") userId: String): retrofit2.Call<VideoResponse>
+    fun getVideos(@Query("game_id") gameId: String): retrofit2.Call<VideoResponse>
 
 
     //Create https client
