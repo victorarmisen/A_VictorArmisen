@@ -3,6 +3,7 @@ package com.example.a_victorarmisen.network
 import com.example.a_victorarmisen.model.GamesResponse
 import com.example.a_victorarmisen.model.TWStreamResponse
 import com.example.a_victorarmisen.model.UserResponse
+import com.example.a_victorarmisen.model.VideoResponse
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
@@ -21,8 +22,8 @@ interface TwitchApiService {
     suspend fun getGames(@Query("id") gameId: String): retrofit2.Call<GamesResponse>
 
     @Headers("Client-ID: $clientId")
-    @GET("users")
-    fun getUsers(@Query("id") userId: String): retrofit2.Call<UserResponse>
+    @GET("videos")
+    fun getVideos(@Query("id") userId: String): retrofit2.Call<VideoResponse>
 
 
     //Create https client

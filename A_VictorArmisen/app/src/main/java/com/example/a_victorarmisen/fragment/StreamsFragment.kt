@@ -99,8 +99,14 @@ class StreamsFragment : Fragment() {
 
                         adapter.list.add(stream)
 
+
+
                         Log.i("MainActivity", "Title: ${stream.title} and image: ${stream.thumbnailUrl} and username: ${stream.username}")
                         Log.i("MainActivity", "Stream Url: https://www.twitch.tv/${stream.username}")
+
+
+
+
                     }
 
                     adapter.notifyDataSetChanged()
