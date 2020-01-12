@@ -40,8 +40,8 @@ public class StreamsDetailActivity : AppCompatActivity() {
 
         stream_name_textView.setText("Username: " + get_intent_name)
         stream_game_textView.setText("Game playing: " + get_intent_game)
-        stream_prueba_textView.setText("Video URL: " + get_intent_video)
-        stream_viewcount_textView.setText("Viewcount: " + get_intent_viewcount)
+        stream_prueba_textView.setText("Other video URL: " + get_intent_video)
+        stream_viewcount_textView.setText("Other streamer description: " + get_intent_viewcount)
 
         //Video
 
