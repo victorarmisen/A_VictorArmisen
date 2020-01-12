@@ -5,9 +5,8 @@ import com.google.gson.annotations.SerializedName
 
 data class VideoModel (
         val id: String? = null,
-        val title: String ? = null,
-        val description: String ? = null,
-        val url: String? = null,
+        val name: String? = null,
+        val videoPath: String? = null,
         @SerializedName("box_art_url") val imageUrl: String? = null
 )
 

@@ -29,7 +29,7 @@ class StreamsAdapter(var list: ArrayList<TWStream>) : RecyclerView.Adapter<Strea
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val stream = list[position]
-        holder.button.text = list[position].username
+        holder.button.text = list[position].userId
         Log.i("StreamsAdapter", "Hello")
 
         holder.button.setOnClickListener {
@@ -37,11 +37,14 @@ class StreamsAdapter(var list: ArrayList<TWStream>) : RecyclerView.Adapter<Strea
             val intent = Intent(holder.button.context, StreamsDetailActivity::class.java)
             intent.putExtra("name_stream", stream.username)
             intent.putExtra("game_stream", stream.game?.name)
+<<<<<<< HEAD
             intent.putExtra("video_stream", stream.video?.url)
+=======
+            intent.putExtra("video_stream", stream.video?.name)
+>>>>>>> parent of 8a42e7c... Video API working
 
             Log.i("StreamsAdapter", "Hello")
             Log.i("StreamsFragment", "STREAM VIDEO NAME: " + stream.video)
-            Log.i("StreamsFragment", "STREAM GAME NAME: " + stream.game)
             holder.button.context.startActivity(intent)
 
 

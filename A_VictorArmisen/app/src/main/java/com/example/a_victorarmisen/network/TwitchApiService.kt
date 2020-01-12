@@ -23,12 +23,9 @@ interface TwitchApiService {
 
     @Headers("Client-ID: $clientId")
     @GET("videos")
-    fun getVideos(@Query("id") userId: String): retrofit2.Call<VideoResponse>
-/*
-    @Headers("Client-ID: $clientId")
-    @GET("tags")
-    fun getVideos(@Query("broadcaster_id") broad: String): retrofit2.Call<VideoResponse>
-*/
+    fun getVideos(@Query("game_id") gameId: String): retrofit2.Call<VideoResponse>
+
+
     //Create https client
     companion object {
 
@@ -38,7 +35,7 @@ interface TwitchApiService {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
 
-        val endpoints = retrofit.create<TwitchApiService>(TwitchApiService::class.java)
+        val endpoints = retrofit.create<TwitchApiService>(TwitchApiService::class.java!!)
     }
 
 
