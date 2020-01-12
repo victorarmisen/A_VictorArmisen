@@ -21,7 +21,7 @@ interface TwitchApiService {
     suspend fun getGames(@Query("id") gameId: String): retrofit2.Call<GamesResponse>
 
     @Headers("Client-ID: $clientId")
-    @GET("videos")
+    @GET("users")
     fun getUsers(@Query("id") userId: String): retrofit2.Call<UserResponse>
 
 
