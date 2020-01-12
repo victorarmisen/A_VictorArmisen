@@ -2,6 +2,7 @@ package com.example.a_victorarmisen.viewmodels
 
 import android.content.Intent
 import android.util.Log
+import android.util.Patterns
 import android.widget.Toast
 import androidx.core.content.ContextCompat.startActivity
 import androidx.lifecycle.MutableLiveData
@@ -22,6 +23,11 @@ class RegisterViewModel
     fun isUsernameValid(username: String): Boolean {
         return username.isNotBlank()
     }
+
+    fun isEmailValid(email: String) : Boolean {
+        return email.isNotBlank() && Patterns.EMAIL_ADDRESS.matcher(email).matches()
+    }
+
 
     //Email is valid
     //Password is valid: Pasar el codigo de signup password aqui

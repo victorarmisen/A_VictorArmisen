@@ -74,10 +74,30 @@ class SignUp : AppCompatActivity() {
         //ViewModel begins
         Button_SignUp.setOnClickListener {
 
-            //Read Fields
+            //1 - Read Fields
             val username = eEmail.getText().toString()
             val mail = eEmail.getText().toString()
             val pass = pPass.getText().toString()
+
+            // 2: Validate
+            // Validate Username
+            if (!viewModel.isUsernameValid(username)) {
+
+                // or
+                Toast.makeText(
+                        username_current.context,
+                        "Error Username not valid",
+                        Toast.LENGTH_LONG
+                ).show()
+                return@setOnClickListener
+            }
+
+            // Validate Email
+            if (!viewModel.isEmailValid(mail)) {
+                Toast.makeText(username_current.context, "Invalid Email", Toast.LENGTH_LONG).show()
+                return@setOnClickListener
+            }
+
 
             //Validations view model
             //To do este codigo se va a RegisterViewModel: create user
