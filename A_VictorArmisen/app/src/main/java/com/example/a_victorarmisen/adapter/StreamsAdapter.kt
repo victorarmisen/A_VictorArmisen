@@ -29,7 +29,7 @@ class StreamsAdapter(var list: ArrayList<TWStream>) : RecyclerView.Adapter<Strea
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val stream = list[position]
-        holder.button.text = list[position].userId
+        holder.button.text = list[position].username
         Log.i("StreamsAdapter", "Hello")
 
         holder.button.setOnClickListener {

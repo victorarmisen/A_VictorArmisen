@@ -4,7 +4,7 @@
     android:layout_height="match_parent">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/recyclerviewChat"/>
 
@@ -17,8 +17,9 @@
 
             <EditText
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="45dp"
                 android:layout_marginBottom="100dp"
+                android:background="@color/colorFont"
                 android:layout_alignParentBottom="true"
                 android:id="@+id/text_send"
             ></EditText>
