@@ -59,87 +59,95 @@ class SignUp : AppCompatActivity() {
             }
         })
 
-
-
-
-        //
         // Configure Google Sign In
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestIdToken(getString(R.string.default_web_client_id))
             .requestEmail()
             .build()
 
+        ///////////////
 
 
 
-
-        //val buttonClick = findViewById<Button>(R.id.button_send) as Button
         val uUser = findViewById<EditText>(R.id.username_current) as EditText;
         val eEmail = findViewById<EditText>(R.id.mail_current) as EditText;
         val pPass = findViewById<EditText>(R.id.password) as EditText;
 
-        //val mailLog = findViewById<EditText>(R.id.mail_Log) as EditText;
-        //val passLog = findViewById<EditText>(R.id.pass_Log) as EditText;
 
+
+        //ViewModel begins
         Button_SignUp.setOnClickListener {
 
-            //startActivity(Intent(this, NewsFragment::class.java))
-            println(eEmail.getText().toString());
-            println(pPass.getText().toString());
-
+            //Read Fields
             val username = eEmail.getText().toString()
             val mail = eEmail.getText().toString()
             val pass = pPass.getText().toString()
 
             //Validations view model
-            //To do este codigo se va a RegisterViewModel
-            auth.createUserWithEmailAndPassword(mail, pass)
-                .addOnCompleteListener(this) { task ->
-                    if (task.isSuccessful) {
-                        // Sign in success, update UI with the signed-in user's information
-                        Log.d("Sign", "createUserWithEmail:success")
-                        val user = auth.currentUser
-                        val userModel =
-                            UserMode(
-                                user?.uid,
-                                username,
-                                mail
-                            )
+            //To do este codigo se va a RegisterViewModel: create user
+            viewModel.createUser(username, mail, pass)
 
-                        val db = FirebaseFirestore.getInstance()
-                        //  if (user != null) {
+            println(mail.toString())
+            println(pass.toString())
+            println("HELLO")
 
-                        if (user != null) {
-                            db.collection("users")
-                                .document(user.uid)
-                                .set(userModel)
-                                .addOnSuccessListener {
-                                    // Sign Up Completed!
-                                    // TODO: Tell user everything was fine and finish!
-                                    Log.e("SignUpActivity", "user everything was fine and finish!")
-                                    Toast.makeText(this@SignUp, "user everything was fine and finish!.", Toast.LENGTH_SHORT).show()
-                                    finish()
-                                    startActivity(Intent(this, MainActivity::class.java))
+            /*
+            if(mail != null && pass != null) {
 
-                                }.addOnFailureListener {
-                                    // TODO: Handle failure
-                                    Log.e("SignUpActivity", it.message)
-                                    Toast.makeText(this@SignUp, it.message, Toast.LENGTH_SHORT).show()
+                auth.createUserWithEmailAndPassword(mail, pass)
+                        .addOnCompleteListener(this) { task ->
+                            if (task.isSuccessful) {
+                                // Sign in success, update UI with the signed-in user's information
+                                Log.d("Sign", "createUserWithEmail:success")
+                                val user = auth.currentUser
+                                val userModel =
+                                        UserMode(
+                                                user?.uid,
+                                                username,
+                                                mail
+                                        )
+
+                                val db = FirebaseFirestore.getInstance()
+                                //  if (user != null) {
+
+                                if (user != null) {
+                                    db.collection("users")
+                                            .document(user.uid)
+                                            .set(userModel)
+                                            .addOnSuccessListener {
+                                                // Sign Up Completed!
+                                                // TODO: Tell user everything was fine and finish!
+                                                Log.e("SignUpActivity", "user everything was fine and finish!")
+                                                Toast.makeText(this@SignUp, "user everything was fine and finish!.", Toast.LENGTH_SHORT).show()
+                                                finish()
+                                                startActivity(Intent(this, MainActivity::class.java))
+
+                                            }.addOnFailureListener {
+                                                // TODO: Handle failure
+                                                Log.e("SignUpActivity", it.message)
+                                                Toast.makeText(this@SignUp, it.message, Toast.LENGTH_SHORT).show()
+                                            }
                                 }
+
+
+
+
+                            } else {
+                                // If sign in fails, display a message to the user.
+                                Log.w("SignUp", "createUserWithEmail:failure", task.exception)
+                                Toast.makeText(this@SignUp, "Authentication failed.", Toast.LENGTH_SHORT).show()
+
+                            }
+
+                            // ...
                         }
 
+            }
+
+            */
 
 
-
-                    } else {
-                        // If sign in fails, display a message to the user.
-                        Log.w("SignUp", "createUserWithEmail:failure", task.exception)
-                        Toast.makeText(this@SignUp, "Authentication failed.", Toast.LENGTH_SHORT).show()
-
-                    }
-
-                    // ...
-                }
+            //Finish
 
 
 
