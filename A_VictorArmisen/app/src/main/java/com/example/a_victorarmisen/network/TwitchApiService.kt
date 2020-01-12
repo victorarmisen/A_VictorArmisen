@@ -19,7 +19,7 @@ interface TwitchApiService {
 
     @Headers("Client-ID: $clientId")
     @GET("games")
-    suspend fun getGames(@Query("id") gameId: String): retrofit2.Call<GamesResponse>
+    fun getGames(@Query("id") gameId: String): retrofit2.Call<GamesResponse>
 
     @Headers("Client-ID: $clientId")
     @GET("videos")

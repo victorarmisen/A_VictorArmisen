@@ -14,7 +14,9 @@ import com.example.a_victorarmisen.model.*
 import com.example.a_victorarmisen.network.TwitchApiService
 import kotlinx.android.synthetic.main.fragment_streams.*
 import kotlinx.coroutines.launch
+import retrofit2.Call
 import retrofit2.HttpException
+import retrofit2.Response
 import java.io.IOException
 
 class StreamsFragment : Fragment() {
@@ -94,15 +96,53 @@ class StreamsFragment : Fragment() {
             }
 
             override fun onResponse(call: retrofit2.Call<TWStreamResponse>, response: retrofit2.Response<TWStreamResponse>) {
-                response.body()?.data?.let { streams ->
+                //Streams
+                val str = response.body()?.data
+
+                str?.let { streams ->
                     for (stream in streams) {
 
-                        adapter.list.add(stream)
+                        //adapter.list.add(stream)
 
 
 
                         Log.i("MainActivity", "Title: ${stream.title} and image: ${stream.thumbnailUrl} and username: ${stream.username}")
                         Log.i("MainActivity", "Stream Url: https://www.twitch.tv/${stream.username}")
+
+                        stream.gameId?.let { gameId ->
+                            TwitchApiService.endpoints.getGames(gameId).enqueue(object : retrofit2.Callback<GamesResponse>{
+                                override fun onFailure(call: Call<GamesResponse>, t: Throwable) {
+                                    Log.w("StreamsFragment",t)
+                                }
+
+                                override fun onResponse(call: Call<GamesResponse>, response: Response<GamesResponse>) {
+                                    if(response.isSuccessful()) {
+                                        val games = response.body()?.data
+                                        str?.forEach { stream->
+                                            games?.forEach { game->
+                                                if(stream.gameId == game.id){
+                                                    stream.game = game
+                                                }
+                                            }
+
+
+
+                                            adapter.list.add(stream)
+                                            adapter.notifyDataSetChanged()
+
+
+                                        }
+                                    }
+                                }
+
+                            })
+
+
+
+
+
+                        }
+
 
 
 
@@ -113,6 +153,16 @@ class StreamsFragment : Fragment() {
 
 
                 }
+
+                //Games
+
+
+
+
+
+
+
+
             }
             /*
             override fun onResponse(call: retrofit2.Call<TWStreamsResponse>, response: retrofit2.Response<TWStreamsResponse>) {
