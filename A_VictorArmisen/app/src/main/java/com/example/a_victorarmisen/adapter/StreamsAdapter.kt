@@ -37,7 +37,7 @@ class StreamsAdapter(var list: ArrayList<TWStream>) : RecyclerView.Adapter<Strea
             val intent = Intent(holder.button.context, StreamsDetailActivity::class.java)
             intent.putExtra("name_stream", stream.username)
             intent.putExtra("game_stream", stream.game?.name)
-            //intent.putExtra("video_stream", stream.video?.title)
+            intent.putExtra("video_stream", stream.video?.url)
 
             Log.i("StreamsAdapter", "Hello")
             Log.i("StreamsFragment", "STREAM VIDEO NAME: " + stream.video)
