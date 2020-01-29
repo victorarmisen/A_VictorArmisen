@@ -14,7 +14,8 @@
         android:layout_marginTop="350dp"
         android:fontFamily="serif"
         android:text="Welcome to the Hunt Companion App."
-        android:textSize="20dp">
+        android:textSize="20dp"
+        android:textColor="@color/colorFont">
 
     </TextView>
 

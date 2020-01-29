@@ -1,5 +1,6 @@
 package com.example.a_victorarmisen.activity
 
+import android.graphics.Color
 import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -40,10 +41,6 @@ class MainActivity : AppCompatActivity() {
 
 
         //179419492885-8keldkg96ui15t1m4sq9ual39uc9u33p.apps.googleusercontent.com
-
-
-
-
 
         MobileAds.initialize(this) { }
         mAdView = findViewById(R.id.adView)

@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.a_victorarmisen.R
 import com.example.a_victorarmisen.adapter.StreamsAdapter
 import com.example.a_victorarmisen.model.*
@@ -29,60 +30,13 @@ class StreamsFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_streams, container, false)
     }
 
-
-
-
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         //Code
         val adapter = StreamsAdapter(ArrayList())
-        recyclerview.layoutManager = GridLayoutManager(requireContext(), 2)
+        recyclerview.layoutManager = LinearLayoutManager(requireContext())
         recyclerview.adapter = adapter
-
-/*
-        suspend fun addGames(streams: List<TWStream>): List<TWStream> {
-            val gameIds = streams.map { it.gameId ?: ""}
-
-            //Get games
-            val gamesReponse = TwitchApiService.endpoints.getGames(gameIds)
-            val games = gamesReponse.data ?: emptyList()
-            //Replace gameId->game
-            streams.forEach { stream -> stream.game == games.firstOrNull{it.id == stream.gameId } }
-            return streams
-
-        }
-
-
-        //Get streams coroutines
-        lifecycleScope.launch {
-            try {
-                val streamsResponse = TwitchApiService.endpoints.getStreams()
-                var streams = streamsResponse.data
-                //Add games to Streams
-                streams = addGames(streams)
-                //Set to StreamsAdapter
-                adapter.list = ArrayList(streams.map {it.game?.name ?: ""})
-                adapter.notifyDataSetChanged()
-
-
-            } catch (e: IOException) {
-
-            }
-
-            catch (e: HttpException) {
-
-            }
-
-            //Log.i
-
-
-        }
-
-
- */
-
 
         //TwitchApiService.endpoints.getStreams();
         TwitchApiService.endpoints.getStreams().enqueue(object : retrofit2.Callback<TWStreamResponse> {
@@ -93,6 +47,7 @@ class StreamsFragment : Fragment() {
             }
 
             override fun onResponse(call: retrofit2.Call<TWStreamResponse>, response: retrofit2.Response<TWStreamResponse>) {
+
                 //Streams
                 val str = response.body()?.data
 

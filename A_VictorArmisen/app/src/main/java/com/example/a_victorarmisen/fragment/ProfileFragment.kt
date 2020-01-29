@@ -12,6 +12,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.example.a_victorarmisen.R
+import com.example.a_victorarmisen.activity.LogIn
 import com.example.a_victorarmisen.activity.MainActivity
 import com.example.a_victorarmisen.activity.SignUp
 import com.example.a_victorarmisen.util.PREF_USERID
@@ -36,8 +37,11 @@ class ProfileFragment : Fragment()  {
     ): View? {
         // Inflate the layout for this fragment
 
+
+
         val view = inflater.inflate(R.layout.fragment_profile, container, false)
         val buttonSignUp = view.findViewById(R.id.button_send) as Button
+        val buttonLogin = view.findViewById(R.id.button_login) as Button
         //val buttonClick = view.findViewById<View>(R.id.button_send) as Button
         val buttonLogOut = view.findViewById(R.id.LOG_OUT) as Button
         val imageUser = view.findViewById(R.id.image_user) as ImageView
@@ -46,6 +50,7 @@ class ProfileFragment : Fragment()  {
         {
 
             buttonSignUp.visibility = View.VISIBLE
+            buttonLogin.visibility = View.VISIBLE
             buttonLogOut.visibility = View.GONE
             imageUser.visibility = View.GONE
 
@@ -55,10 +60,16 @@ class ProfileFragment : Fragment()  {
 
             }
 
+
+            buttonLogin.setOnClickListener {
+                startActivity(Intent(activity, LogIn::class.java))
+            }
+
         } else {
 
             buttonSignUp.visibility = View.GONE
             buttonLogOut.visibility = View.VISIBLE
+            buttonLogin.visibility = View.GONE
             imageUser.visibility = View.VISIBLE
 
             val db = FirebaseFirestore.getInstance()
@@ -115,9 +126,6 @@ class ProfileFragment : Fragment()  {
                         //Log.d(TAG, "get failed with ", exception)
                     }
 
-
-                //println("MENSAJE OSTIA" + username.text)
-                //println("MENSAJE OSTIA" + mail.text)
 
                 buttonLOG_OUT.setOnClickListener {
                     FirebaseAuth.getInstance().signOut() // Cerrar sesion

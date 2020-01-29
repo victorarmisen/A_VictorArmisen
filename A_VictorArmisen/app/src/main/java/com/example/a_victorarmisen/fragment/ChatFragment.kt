@@ -39,30 +39,7 @@ class ChatFragment : Fragment() {
         recyclerviewChat.adapter = adapter
 
         subscribeToMessages()
-
-
-
     }
-/*
-    private fun getMessages() {
-
-        FirebaseFirestore.getInstance()
-                .collection("chat")
-                .get()
-                .addOnSuccessListener {
-                    //val messages = it.toObjects(ChatMessage::class.java)
-                    val messages = it.documents.map { it.toObject(ChatMessage::class.java) ?: ChatMessage() }
-                    //adapter pasar lista de mensaje.
-                    adapter.list = messages
-                    adapter.notifyDataSetChanged()
-                    Log.i("ChatFragment", messages.toString())
-                }
-                .addOnFailureListener {
-                    it.printStackTrace()
-                }
-
-    }
-*/
 
     private fun subscribeToMessages() {
         FirebaseFirestore.getInstance()
@@ -77,12 +54,10 @@ class ChatFragment : Fragment() {
                 }
     }
 
-
-
-
     private fun sendMessage(text: String) {
 
-        val message = ChatMessage(text = text, timestamp = System.currentTimeMillis(), userId = FirebaseAuth.getInstance()
+        val message = ChatMessage(text = text, timestamp = System.currentTimeMillis(),
+                userId = FirebaseAuth.getInstance()
                 .currentUser?.uid)
         FirebaseFirestore.getInstance()
                 .collection("chat")

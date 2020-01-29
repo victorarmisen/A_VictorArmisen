@@ -9,14 +9,25 @@ import android.content.Intent
 import android.widget.EditText
 import android.widget.Toast
 import com.example.a_victorarmisen.R
+import com.example.a_victorarmisen.fragment.ProfileFragment
+import com.facebook.AccessToken
+import com.facebook.CallbackManager
+import com.facebook.FacebookCallback
+import com.facebook.FacebookException
+import com.facebook.login.LoginResult
 import com.google.android.gms.tasks.OnCompleteListener
+import com.google.firebase.auth.FacebookAuthProvider
 import kotlinx.android.synthetic.main.activity_log_in.*
+import kotlinx.android.synthetic.main.activity_log_in.button_facebook
+import kotlinx.android.synthetic.main.activity_sign_up.*
 
 class LogIn : AppCompatActivity() {
 
     private lateinit var user_result  : String
     private lateinit var mail_result  : String
     private lateinit var auth: FirebaseAuth
+    private lateinit var callbackManager: CallbackManager
+
 
     override fun onCreate(savedInstanceState: Bundle?)
     {
@@ -114,7 +125,64 @@ class LogIn : AppCompatActivity() {
 
         }
 
+        // Initialize Facebook Login button
+        callbackManager = CallbackManager.Factory.create()
 
+        button_facebook.setReadPermissions("email", "public_profile")
+        button_facebook.registerCallback(callbackManager, object : FacebookCallback<LoginResult> {
+            override fun onSuccess(loginResult: LoginResult) {
+                //Log.d(TAG, "facebook:onSuccess:$loginResult")
+                Toast.makeText(this@LogIn, "facebook:onSuccess:$loginResult", Toast.LENGTH_SHORT).show()
+                handleFacebookAccessToken(loginResult.accessToken)
+            }
+
+            override fun onCancel() {
+                //Log.d(TAG, "facebook:onCancel")
+                Toast.makeText(this@LogIn, "facebook:onCancel", Toast.LENGTH_SHORT).show()
+                // ...
+            }
+
+            override fun onError(error: FacebookException) {
+                //Log.d(TAG, "facebook:onError", error)
+                Toast.makeText(this@LogIn, "facebook:onError", Toast.LENGTH_SHORT).show()
+                // ...
+            }
+        })// ...
 
     }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        // Pass the activity result back to the Facebook SDK
+        callbackManager.onActivityResult(requestCode, resultCode, data)
+    }
+
+
+    private fun handleFacebookAccessToken(token: AccessToken) {
+        //Log.d(TAG, "handleFacebookAccessToken:$token")
+
+        val credential = FacebookAuthProvider.getCredential(token.token)
+        auth.signInWithCredential(credential)
+                .addOnCompleteListener(this) { task ->
+                    if (task.isSuccessful) {
+                        // Sign in success, update UI with the signed-in user's information
+                        //Log.d(TAG, "signInWithCredential:success")
+                        val user = auth.currentUser
+                        Toast.makeText(this@LogIn, "Succesfull Log", Toast.LENGTH_SHORT).show()
+                        startActivity(Intent(this, ProfileFragment::class.java))
+                        //updateUI(user)
+                    } else {
+                        // If sign in fails, display a message to the user.
+                        //Log.w(TAG, "signInWithCredential:failure", task.exception)
+                        Toast.makeText(this@LogIn, "Authentication failed.",
+                                Toast.LENGTH_SHORT).show()
+                        //updateUI(null)
+                    }
+
+                    // ...
+                }
+    }
+
+
 }

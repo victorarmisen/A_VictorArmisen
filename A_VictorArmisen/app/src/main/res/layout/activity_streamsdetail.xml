@@ -12,6 +12,7 @@
         android:layout_marginTop="50dp"
         android:textSize="40dp"
         android:id="@+id/stream_name"
+        android:textColor="@color/colorFont"
         >
     </TextView>
 
@@ -29,7 +30,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:layout_gravity="center_horizontal"
-        android:id="@+id/game_stream">
+        android:id="@+id/game_stream"
+        android:textColor="@color/colorFont">
 
     </TextView>
 
@@ -37,7 +39,8 @@
     android:layout_width="200dp"
     android:layout_height="wrap_content"
     android:layout_gravity="center_horizontal"
-    android:id="@+id/prueba_URL_video">
+    android:id="@+id/prueba_URL_video"
+        android:textColor="@color/colorFont">
 
     </TextView>
 
@@ -45,7 +48,9 @@
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:id="@+id/viewcount_streamdetail">
+        android:id="@+id/viewcount_streamdetail"
+        android:textColor="@color/colorFont">
+
 
     </TextView>
 

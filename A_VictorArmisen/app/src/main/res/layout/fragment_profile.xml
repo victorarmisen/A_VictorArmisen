@@ -37,6 +37,15 @@
         android:fontFamily="serif"
         android:text="SignUp" />
 
+    <Button
+        android:id="@+id/button_login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="300dp"
+        android:fontFamily="serif"
+        android:text="Login" />
+
 
     <TextView
         android:id="@+id/Username_LogIn"
@@ -46,7 +55,8 @@
         android:layout_marginTop="120dp"
         android:fontFamily="serif"
         android:gravity="center"
-        android:text="Username"></TextView>
+        android:text="Username"
+        android:textColor="@color/colorFont"></TextView>
 
     <TextView
         android:id="@+id/Mail_LogIn"
@@ -55,7 +65,8 @@
         android:fontFamily="serif"
         android:gravity="center"
         android:text="null"
-        tools:ignore="MissingConstraints"></TextView>
+        tools:ignore="MissingConstraints"
+        android:textColor="@color/colorFont"></TextView>
 
 
 

@@ -21,6 +21,7 @@
                 android:layout_weight="0.1"
                 android:text="@string/username"
                 android:layout_marginTop="@dimen/margin"
+            android:textColor="@color/colorFont"
                 android:gravity="center" />
 
         <EditText
@@ -28,6 +29,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:inputType="text"
+            android:textColor="@color/colorFont"
                 android:gravity="center">
 
         </EditText>
@@ -36,6 +38,7 @@
                 android:layout_height="2dp"
                 android:layout_weight="0.1"
                 android:text="@string/email"
+            android:textColor="@color/colorFont"
                 android:layout_marginTop="@dimen/margin"
                 android:gravity="center"></TextView>
         <EditText
@@ -43,18 +46,21 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:inputType="text"
+            android:textColor="@color/colorFont"
                 android:gravity="center">
         </EditText>
         <TextView
                 android:layout_width="match_parent"
                 android:layout_height="2dp"
                 android:layout_weight="0.1"
+                android:textColor="@color/colorFont"
                 android:text="@string/password"
                 android:gravity="center" />
         <EditText
                 android:id="@+id/password"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
+            android:textColor="@color/colorFont"
                 android:inputType="text"
                 android:gravity="center">
         </EditText>
@@ -62,26 +68,12 @@
                 android:id="@+id/Button_SignUp"
                 android:layout_width="200dp"
                 android:layout_height="50dp"
-                android:gravity="center"
+                android:layout_gravity="center_horizontal"
                 android:text="SignUp"></Button>
 
-        <Button
-                android:id="@+id/LOG_IN"
-                android:layout_width="match_parent"
-                android:layout_height="2dp"
-                android:layout_weight="0.1"
-
-                android:text="Ya estas registrado? LogIn"
-                android:gravity="center" />
 
 
-        <com.facebook.login.widget.LoginButton
-                android:id="@+id/button_facebook"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="30dp"
-                android:layout_marginBottom="30dp" />
+
 
     </LinearLayout>
 
