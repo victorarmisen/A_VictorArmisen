@@ -29,8 +29,6 @@ import kotlinx.android.synthetic.main.fragment_streams.*
  */
 class NewsFragment : Fragment() {
 
-
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
