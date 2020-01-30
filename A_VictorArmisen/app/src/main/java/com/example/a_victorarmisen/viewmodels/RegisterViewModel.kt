@@ -7,7 +7,7 @@ import android.widget.Toast
 import androidx.core.content.ContextCompat.startActivity
 import androidx.lifecycle.MutableLiveData
 import com.example.a_victorarmisen.activity.MainActivity
-import com.example.a_victorarmisen.model.UserModel
+//import com.example.a_victorarmisen.model.UserModel
 import com.example.a_victorarmisen.util.UserMode
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
