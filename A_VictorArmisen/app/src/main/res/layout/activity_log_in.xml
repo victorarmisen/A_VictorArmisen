@@ -24,6 +24,7 @@
             android:layout_marginTop="150dp"
             android:fontFamily="serif"
             android:text="Sign In"
+            android:textColor="@color/colorFont"
             android:textSize="30dp"></TextView>
 
 
@@ -35,6 +36,7 @@
             android:fontFamily="serif"
             android:gravity="center"
             android:inputType="text"
+            android:textColor="@color/colorFont"
             tools:ignore="MissingConstraints"></EditText>
 
         <EditText
@@ -43,6 +45,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="serif"
             android:inputType="text"
+            android:textColor="@color/colorFont"
             tools:ignore="MissingConstraints"></EditText>
 
         <Button

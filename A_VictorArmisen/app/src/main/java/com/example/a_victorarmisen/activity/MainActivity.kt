@@ -41,12 +41,12 @@ class MainActivity : AppCompatActivity() {
 
 
         //179419492885-8keldkg96ui15t1m4sq9ual39uc9u33p.apps.googleusercontent.com
-
+        /*
         MobileAds.initialize(this) { }
         mAdView = findViewById(R.id.adView)
         val adRequest = AdRequest.Builder().build()
         mAdView.loadAd(adRequest)
-
+        */
         bottomNavigationView.setOnNavigationItemSelectedListener { item ->
             // TODO: Go to the correct screen
             when (item.itemId) {

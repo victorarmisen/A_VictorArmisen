@@ -31,9 +31,6 @@
                 android:parentActivityName=".activity.MainActivity">
         </activity>
 
-        <activity android:name=".activity.RegisterActivity"
-            android:parentActivityName=".activity.MainActivity"></activity>
-
         <meta-data
             android:name="android.support.PARENT_ACTIVITY"
             android:value="com.example.a_victorarmisen.activity.MainActivity"/>

@@ -4,72 +4,54 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".fragment.ProfileFragment">
-
-    <!-- TODO: Update blank fragment layout -->
-
     <ImageView
             android:id="@+id/image_user"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_profile_avatar_foreground">
-
     </ImageView>
+    <TextView
+        android:id="@+id/Mail_LogIn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="100dp"
+        android:fontFamily="serif"
+        android:layout_marginTop="45dp"
+        android:gravity="center"
+        android:text="Guest"
+        android:textColor="@color/colorFont">
+    </TextView>
 
     <Button
         android:id="@+id/LOG_OUT"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="400dp"
+        android:layout_marginTop="100dp"
         android:fontFamily="serif"
-
         android:gravity="center"
-
         android:text="LOG_OUT"
-        tools:ignore="MissingConstraints" />
-
+        tools:ignore="MissingConstraints"
+        />
     <Button
         android:id="@+id/button_send"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="-75dp"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="400dp"
+        android:layout_marginTop="100dp"
         android:fontFamily="serif"
-        android:text="SignUp" />
-
+        android:text="SignUp"
+        />
     <Button
         android:id="@+id/button_login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="300dp"
+        android:layout_marginLeft="75dp"
+        android:layout_marginTop="100dp"
         android:fontFamily="serif"
-        android:text="Login" />
-
-
-    <TextView
-        android:id="@+id/Username_LogIn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="120dp"
-        android:fontFamily="serif"
-        android:gravity="center"
-        android:text="Username"
-        android:textColor="@color/colorFont"></TextView>
-
-    <TextView
-        android:id="@+id/Mail_LogIn"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:fontFamily="serif"
-        android:gravity="center"
-        android:text="null"
-        tools:ignore="MissingConstraints"
-        android:textColor="@color/colorFont"></TextView>
-
-
-
-
+        android:text="Login"
+        />
 
 </FrameLayout>

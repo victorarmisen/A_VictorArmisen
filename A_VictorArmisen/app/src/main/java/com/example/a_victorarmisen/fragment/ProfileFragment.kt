@@ -52,7 +52,7 @@ class ProfileFragment : Fragment()  {
             buttonSignUp.visibility = View.VISIBLE
             buttonLogin.visibility = View.VISIBLE
             buttonLogOut.visibility = View.GONE
-            imageUser.visibility = View.GONE
+            imageUser.visibility = View.VISIBLE
 
             buttonSignUp.setOnClickListener {
                 println("Hello")
@@ -79,7 +79,7 @@ class ProfileFragment : Fragment()  {
             //val mail = findViewById(R.id.Mail_LogIn) as TextView
 
             val buttonLOG_OUT = view.findViewById(R.id.LOG_OUT) as Button
-            val username = view.findViewById(R.id.Username_LogIn) as TextView
+            //val username = view.findViewById(R.id.Username_LogIn) as TextView
             val mail = view.findViewById(R.id.Mail_LogIn) as TextView
 
             //val eEmail = findViewById<EditText>(R.id.mail_current) as EditText;
@@ -114,7 +114,7 @@ class ProfileFragment : Fragment()  {
                         {
                             println(document.get("email").toString())
 
-                            username.setText(document.get("id").toString())
+                            //username.setText(document.get("id").toString())
                             mail.setText(document.get("email").toString())
 
 
@@ -138,16 +138,6 @@ class ProfileFragment : Fragment()  {
 
 
         }
-
-
-
-
-
-
-
-
-
-
 
         return view;
 

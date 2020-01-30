@@ -58,7 +58,7 @@ class ChatFragment : Fragment() {
 
         val message = ChatMessage(text = text, timestamp = System.currentTimeMillis(),
                 userId = FirebaseAuth.getInstance()
-                .currentUser?.uid)
+                .currentUser?.uid, username = FirebaseAuth.getInstance().currentUser?.email)
         FirebaseFirestore.getInstance()
                 .collection("chat")
                 .add(message)

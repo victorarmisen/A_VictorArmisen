@@ -13,6 +13,8 @@ class ChatAdapter(var list: List<ChatMessage>) : RecyclerView.Adapter<ChatAdapte
     class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
         //..
         val textChat = itemView.textChatUser
+        val textUsername = itemView.textUsernameChat
+        val textTime = itemView.textTimeChat
 
     }
 
@@ -27,7 +29,8 @@ class ChatAdapter(var list: List<ChatMessage>) : RecyclerView.Adapter<ChatAdapte
 
     override fun onBindViewHolder(holder: ChatAdapter.ViewHolder, position: Int) {
             holder.textChat.text = list[position].text
-
+            holder.textUsername.text = list[position].username
+            holder.textTime.text = list[position].timestamp.toString()
     }
 
 
