@@ -38,6 +38,164 @@ class SignUp : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_up)
 
+
+
+        auth = FirebaseAuth.getInstance()
+
+
+        //VIEWMODEL
+        viewModel = RegisterViewModel()
+
+        viewModel.isUserCreated.observe(this, Observer {isUserCreated->
+            if(isUserCreated) {
+                //Toast.text
+                Toast.makeText(
+                    username_current.context,
+                    "User Created Succesfully!",
+                    Toast.LENGTH_LONG
+                ).show()
+                //Close
+                finish()
+            }
+        })
+
+        // Configure Google Sign In
+        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+            .requestIdToken(getString(R.string.default_web_client_id))
+            .requestEmail()
+            .build()
+
+        ///////////////
+
+        val uUser = findViewById<EditText>(R.id.username_current) as EditText;
+        val eEmail = findViewById<EditText>(R.id.mail_current) as EditText;
+        val pPass = findViewById<EditText>(R.id.password) as EditText;
+
+        //ViewModel begins
+        Button_SignUp.setOnClickListener {
+
+            //1 - Read Fields
+            val username = eEmail.getText().toString()
+            val mail = eEmail.getText().toString()
+            val pass = pPass.getText().toString()
+
+            // 2: Validate
+            // Validate Username
+            if (!viewModel.isUsernameValid(username)) {
+
+                // or
+                Toast.makeText(
+                    username_current.context,
+                    "Error Username not valid",
+                    Toast.LENGTH_LONG
+                ).show()
+                return@setOnClickListener
+            }
+
+            // Validate Email
+            if (!viewModel.isEmailValid(mail)) {
+                Toast.makeText(username_current.context, "Invalid Email", Toast.LENGTH_LONG).show()
+                return@setOnClickListener
+            }
+
+
+            //Validations view model
+            //To do este codigo se va a RegisterViewModel: create user
+            viewModel.createUser(username, mail, pass)
+
+            println(mail.toString())
+            println(pass.toString())
+            println("HELLO")
+
+            /*
+            if(mail != null && pass != null) {
+
+                auth.createUserWithEmailAndPassword(mail, pass)
+                        .addOnCompleteListener(this) { task ->
+                            if (task.isSuccessful) {
+                                // Sign in success, update UI with the signed-in user's information
+                                Log.d("Sign", "createUserWithEmail:success")
+                                val user = auth.currentUser
+                                val userModel =
+                                        UserMode(
+                                                user?.uid,
+                                                username,
+                                                mail
+                                        )
+
+                                val db = FirebaseFirestore.getInstance()
+                                //  if (user != null) {
+
+                                if (user != null) {
+                                    db.collection("users")
+                                            .document(user.uid)
+                                            .set(userModel)
+                                            .addOnSuccessListener {
+                                                // Sign Up Completed!
+                                                // TODO: Tell user everything was fine and finish!
+                                                Log.e("SignUpActivity", "user everything was fine and finish!")
+                                                Toast.makeText(this@SignUp, "user everything was fine and finish!.", Toast.LENGTH_SHORT).show()
+                                                finish()
+                                                startActivity(Intent(this, MainActivity::class.java))
+
+                                            }.addOnFailureListener {
+                                                // TODO: Handle failure
+                                                Log.e("SignUpActivity", it.message)
+                                                Toast.makeText(this@SignUp, it.message, Toast.LENGTH_SHORT).show()
+                                            }
+                                }
+
+
+
+
+                            } else {
+                                // If sign in fails, display a message to the user.
+                                Log.w("SignUp", "createUserWithEmail:failure", task.exception)
+                                Toast.makeText(this@SignUp, "Authentication failed.", Toast.LENGTH_SHORT).show()
+
+                            }
+
+                            // ...
+                        }
+
+            }
+
+            */
+
+
+            //Finish
+
+
+
+
+
+
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*
         LOG_IN.setOnClickListener {
 
