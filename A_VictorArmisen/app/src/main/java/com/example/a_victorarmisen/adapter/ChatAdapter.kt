@@ -35,6 +35,7 @@ class ChatAdapter(var list: List<ChatMessage>) : RecyclerView.Adapter<ChatAdapte
             holder.textTime.text = "Time: " + list[position].timestamp.toString()
             val URL_LOGO = "https://i.redd.it/fldyql8i8n931.png"
             Picasso.get().load(URL_LOGO).into(holder.avatar)
+        //
     }
 
 
