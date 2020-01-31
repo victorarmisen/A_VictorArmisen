@@ -71,10 +71,10 @@ class StreamsFragment : Fragment() {
                                         val games = response.body()?.data
                                         str?.forEach { stream->
                                             games?.forEach { game->
-                                                if(stream.gameId == game.id){
+                                                //if(stream.gameId == game.id){
                                                     stream.game = game
 
-                                                }
+                                                //}
                                             }
 
                                         }
@@ -139,12 +139,6 @@ class StreamsFragment : Fragment() {
 
                         adapter.list.add(stream)
                         adapter.notifyDataSetChanged()
-
-
-
-
-
-
 
                     }
 

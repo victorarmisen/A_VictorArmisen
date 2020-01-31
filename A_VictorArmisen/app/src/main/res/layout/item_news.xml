@@ -4,17 +4,19 @@
     android:layout_height="wrap_content">
 
     <ImageView
+            android:id="@+id/image_news"
             android:layout_width="300dp"
             android:layout_height="300dp"
-            android:id="@+id/image_news">
-    </ImageView>
+            android:layout_marginTop="-50dp"
+            android:backgroundTint="@color/colorPrimary"></ImageView>
 
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/title_news"
-        android:textColor="@color/colorFont">
-    </TextView>
+            android:id="@+id/title_news"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="-50dp"
+            android:background="@color/colorPrimary"
+            android:textColor="@color/colorFont"></TextView>
 
 
 

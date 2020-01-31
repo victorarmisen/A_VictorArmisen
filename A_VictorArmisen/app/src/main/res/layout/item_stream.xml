@@ -10,9 +10,10 @@
 
     <Button
             android:id="@+id/button_Stream"
-            android:layout_width="match_parent"
+            android:layout_width="200dp"
+            android:layout_gravity="center_horizontal"
             android:layout_height="match_parent"
-            android:fontFamily="serif"
-           ></Button>
+            android:backgroundTint="@color/colorPrimary"
+            android:fontFamily="serif"></Button>
 
 </LinearLayout>

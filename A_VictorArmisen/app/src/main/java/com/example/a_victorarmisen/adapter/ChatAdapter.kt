@@ -30,9 +30,9 @@ class ChatAdapter(var list: List<ChatMessage>) : RecyclerView.Adapter<ChatAdapte
     }
 
     override fun onBindViewHolder(holder: ChatAdapter.ViewHolder, position: Int) {
-            holder.textChat.text = list[position].text
-            holder.textUsername.text = list[position].username
-            holder.textTime.text = list[position].timestamp.toString()
+            holder.textChat.text = "New message " + "from " + list[position].username + ": "
+            holder.textUsername.text = list[position].text
+            holder.textTime.text = "Time: " + list[position].timestamp.toString()
             val URL_LOGO = "https://i.redd.it/fldyql8i8n931.png"
             Picasso.get().load(URL_LOGO).into(holder.avatar)
     }

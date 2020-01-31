@@ -14,7 +14,7 @@
         android:id="@+id/Mail_LogIn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="100dp"
+        android:layout_marginLeft="120dp"
         android:fontFamily="serif"
         android:layout_marginTop="45dp"
         android:gravity="center"
@@ -23,35 +23,36 @@
     </TextView>
 
     <Button
-        android:id="@+id/LOG_OUT"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="100dp"
-        android:fontFamily="serif"
-        android:gravity="center"
-        android:text="LOG_OUT"
-        tools:ignore="MissingConstraints"
-        />
+            android:id="@+id/LOG_OUT"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_marginTop="100dp"
+            android:backgroundTint="@color/colorPrimary"
+            android:fontFamily="serif"
+            android:text="LOG_OUT"
+            tools:ignore="MissingConstraints" />
+
     <Button
-        android:id="@+id/button_send"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="-75dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="100dp"
-        android:fontFamily="serif"
-        android:text="SignUp"
-        />
+            android:id="@+id/button_send"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+
+            android:layout_marginTop="100dp"
+            android:backgroundTint="@color/colorPrimary"
+            android:fontFamily="serif"
+            android:text="SignUp" />
+
     <Button
-        android:id="@+id/button_login"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginLeft="75dp"
-        android:layout_marginTop="100dp"
-        android:fontFamily="serif"
-        android:text="Login"
-        />
+            android:id="@+id/button_login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_marginLeft="100dp"
+            android:layout_marginTop="100dp"
+            android:backgroundTint="@color/colorPrimary"
+            android:fontFamily="serif"
+            android:text="Login" />
 
 </FrameLayout>
