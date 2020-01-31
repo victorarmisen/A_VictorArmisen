@@ -1,6 +1,7 @@
 package com.example.a_victorarmisen.adapter
 
 import android.content.Intent
+import android.net.Uri
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -10,6 +11,7 @@ import com.example.a_victorarmisen.R
 import com.example.a_victorarmisen.activity.MainActivity
 import com.example.a_victorarmisen.activity.StreamsDetailActivity
 import com.example.a_victorarmisen.model.TWStream
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_stream.view.*
 
 class StreamsAdapter(var list: ArrayList<TWStream>) : RecyclerView.Adapter<StreamsAdapter.ViewHolder>() {
@@ -17,6 +19,7 @@ class StreamsAdapter(var list: ArrayList<TWStream>) : RecyclerView.Adapter<Strea
     class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView)
     {
         val button = itemView.button_Stream
+        val imThumb = itemView.imageThumb
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder
@@ -29,6 +32,7 @@ class StreamsAdapter(var list: ArrayList<TWStream>) : RecyclerView.Adapter<Strea
     {
         return list.count()
     }
+
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int)
     {
@@ -53,6 +57,11 @@ class StreamsAdapter(var list: ArrayList<TWStream>) : RecyclerView.Adapter<Strea
         holder.button.context.startActivity(intent)
 
         }
+
+        val newURL = stream.thumbnailUrl?.replace("{width}","300")?.replace("{height}","300")
+        Log.i("StreamsFragment", newURL.toString())
+        //holder.imThumb.setImageURI(Uri.parse(newURL))
+        Picasso.get().load(newURL).into(holder.imThumb)
 
 
 
