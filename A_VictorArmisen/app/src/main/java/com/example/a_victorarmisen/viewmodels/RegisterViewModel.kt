@@ -59,11 +59,9 @@ class RegisterViewModel
                                         isUserCreated.postValue(true)
                                         Log.e("SignUpActivity", "user everything was fine and finish!")
                                         //startActivity(Intent(this, MainActivity::class.java))
-
                                     }.addOnFailureListener {
                                         Log.e("SignUpActivity", it.message)
                                         error.postValue(it.localizedMessage)
-
                                     }
                         } else {
                             // If sign in fails, display a message to the user.
