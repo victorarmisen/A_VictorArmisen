@@ -20,6 +20,7 @@ import com.example.a_victorarmisen.util.PREF_USERNAME
 import com.example.a_victorarmisen.util.USER_PREFS
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import com.squareup.picasso.Picasso
 
 /**
  * A simple [Fragment] subclass.
@@ -45,6 +46,10 @@ class ProfileFragment : Fragment()  {
         //val buttonClick = view.findViewById<View>(R.id.button_send) as Button
         val buttonLogOut = view.findViewById(R.id.LOG_OUT) as Button
         val imageUser = view.findViewById(R.id.image_user) as ImageView
+
+        val URL_LOGO = "https://i.redd.it/fldyql8i8n931.png"
+
+        Picasso.get().load(URL_LOGO).into(imageUser)
 
         if(FirebaseAuth.getInstance().currentUser == null)
         {

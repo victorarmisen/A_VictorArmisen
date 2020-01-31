@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.a_victorarmisen.R
 import com.example.a_victorarmisen.model.ChatMessage
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_chat.view.*
 
 class ChatAdapter(var list: List<ChatMessage>) : RecyclerView.Adapter<ChatAdapter.ViewHolder>() {
@@ -15,6 +16,7 @@ class ChatAdapter(var list: List<ChatMessage>) : RecyclerView.Adapter<ChatAdapte
         val textChat = itemView.textChatUser
         val textUsername = itemView.textUsernameChat
         val textTime = itemView.textTimeChat
+        val avatar = itemView.Image_Avatar
 
     }
 
@@ -31,6 +33,9 @@ class ChatAdapter(var list: List<ChatMessage>) : RecyclerView.Adapter<ChatAdapte
             holder.textChat.text = list[position].text
             holder.textUsername.text = list[position].username
             holder.textTime.text = list[position].timestamp.toString()
+            val URL_LOGO = "https://i.redd.it/fldyql8i8n931.png"
+            Picasso.get().load(URL_LOGO).into(holder.avatar)
+
     }
 
 
