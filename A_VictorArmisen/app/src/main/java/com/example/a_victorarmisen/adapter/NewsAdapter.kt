@@ -1,6 +1,7 @@
 package com.example.a_victorarmisen.adapter
 
 import android.net.Uri
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -33,8 +34,11 @@ class NewsAdapter(var list: ArrayList<NewsModel>) : RecyclerView.Adapter<NewsAda
         val news = list[position]
 
         holder.newTitle.text = news.title_news
-        //Picasso.get().load(news.image_news).into(holder.newImage)
-        holder.newImage.setImageURI(Uri.parse(news.image_news))
+
+        //val newURL = news.image_news?.replace("{width}","300")?.replace("{height}","300") //No need it
+        Log.i("NewsFragment", news.image_news)
+        //holder.imThumb.setImageURI(Uri.parse(newURL))
+        Picasso.get().load(news.image_news).into(holder.newImage)
 
 
     }
